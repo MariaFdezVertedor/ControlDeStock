@@ -1,0 +1,16 @@
+<RCC>
+  <qresource prefix="xy">
+    <file>caja.png</file>
+    <file>carro.png</file>
+    <file>casa.png</file>
+    <file>cuadrados.png</file>
+    <file>dinero.png</file>
+    <file>factura.png</file>
+    <file>gastos.png</file>
+    <file>lupa.png</file>
+    <file>onoff.png</file>
+    <file>rayas.png</file>
+    <file>Stocked.png</file>
+    <file>small.png</file>
+  </qresource>
+</RCC>
