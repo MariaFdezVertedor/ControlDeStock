@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="xy">
+    <file>minim.png</file>
+    <file>pngwing.com.png</file>
+    <file>pngegg.png</file>
     <file>caja.png</file>
     <file>carro.png</file>
     <file>casa.png</file>

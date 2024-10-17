@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main.ui'
+## Form generated from reading UI file 'mainWobVHR.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.2
+## Created by: Qt User Interface Compiler version 6.4.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -15,323 +15,347 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
-    QLabel, QLineEdit, QMainWindow, QMenuBar,
-    QPushButton, QSizePolicy, QStackedWidget, QStatusBar,
-    QVBoxLayout, QWidget)
-import imagenes_rc
+from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
+    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
+    QStackedWidget, QVBoxLayout, QWidget)
+from recursos import imagenes_rc
 
-class Ui_Panel(object):
-    def setupUi(self, Panel):
-        if not Panel.objectName():
-            Panel.setObjectName(u"Panel")
-        Panel.resize(1189, 776)
-        self.centralwidget = QWidget(Panel)
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(1189, 747)
+        self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.gridLayout_4 = QGridLayout(self.centralwidget)
-        self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.iconNameWidget = QWidget(self.centralwidget)
-        self.iconNameWidget.setObjectName(u"iconNameWidget")
-        self.iconNameWidget.setStyleSheet(u"QWidget{\n"
-"	background-color: rgb(1, 167, 138);\n"
+        self.verticalLayout = QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.frameSuperior = QFrame(self.centralwidget)
+        self.frameSuperior.setObjectName(u"frameSuperior")
+        self.frameSuperior.setMinimumSize(QSize(0, 50))
+        self.frameSuperior.setMaximumSize(QSize(16777215, 50))
+        self.frameSuperior.setStyleSheet(u"background-color: rgb(1, 167, 138);")
+        self.frameSuperior.setFrameShape(QFrame.StyledPanel)
+        self.frameSuperior.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_2 = QHBoxLayout(self.frameSuperior)
+        self.horizontalLayout_2.setSpacing(2)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.bntMenu = QPushButton(self.frameSuperior)
+        self.bntMenu.setObjectName(u"bntMenu")
+        self.bntMenu.setMinimumSize(QSize(200, 35))
+        self.bntMenu.setMaximumSize(QSize(16777215, 35))
+        font = QFont()
+        font.setFamilies([u"Questrial"])
+        font.setPointSize(12)
+        font.setBold(True)
+        self.bntMenu.setFont(font)
+        self.bntMenu.setStyleSheet(u"QPushButton{\n"
+"background-color: #01a78a;\n"
+"border-radius:0px;\n"
 "}\n"
 "\n"
-"QPushButton {\n"
-"	color:white;\n"
-"	text-aling:left;\n"
-"	height:50px;\n"
-"	border:none;\n"
-"	padding-left:10px;\n"
+"QPushButton:hover{\n"
+"border:5px solid #ffffff;\n"
+"background-color:#ffffff;\n"
 "}")
-        self.verticalLayout_4 = QVBoxLayout(self.iconNameWidget)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.line_4 = QFrame(self.iconNameWidget)
-        self.line_4.setObjectName(u"line_4")
-        self.line_4.setFrameShape(QFrame.Shape.VLine)
-        self.line_4.setFrameShadow(QFrame.Shadow.Sunken)
-
-        self.verticalLayout_4.addWidget(self.line_4)
-
-        self.verticalLayout_2 = QVBoxLayout()
-        self.verticalLayout_2.setSpacing(15)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.resumen_2 = QPushButton(self.iconNameWidget)
-        self.resumen_2.setObjectName(u"resumen_2")
-        font = QFont()
-        font.setPointSize(12)
-        self.resumen_2.setFont(font)
         icon = QIcon()
-        icon.addFile(u":/xy/cuadrados.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.resumen_2.setIcon(icon)
-        self.resumen_2.setCheckable(True)
-        self.resumen_2.setAutoExclusive(True)
+        icon.addFile(u"../recursos/rayas.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bntMenu.setIcon(icon)
 
-        self.verticalLayout_2.addWidget(self.resumen_2)
+        self.horizontalLayout_2.addWidget(self.bntMenu)
 
-        self.almacen_2 = QPushButton(self.iconNameWidget)
-        self.almacen_2.setObjectName(u"almacen_2")
-        self.almacen_2.setFont(font)
+        self.horizontalSpacer = QSpacerItem(830, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer)
+
+        self.btnMinimizar = QPushButton(self.frameSuperior)
+        self.btnMinimizar.setObjectName(u"btnMinimizar")
+        self.btnMinimizar.setMaximumSize(QSize(16777215, 35))
+        self.btnMinimizar.setStyleSheet(u"QPushButton{\n"
+"border:0px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border:5px solid #ffffff;\n"
+"background-color:#01a78a;\n"
+"}")
         icon1 = QIcon()
-        icon1.addFile(u":/xy/caja.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.almacen_2.setIcon(icon1)
-        self.almacen_2.setCheckable(True)
-        self.almacen_2.setAutoExclusive(True)
+        icon1.addFile(u"../recursos/minim.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnMinimizar.setIcon(icon1)
+        self.btnMinimizar.setIconSize(QSize(32, 32))
 
-        self.verticalLayout_2.addWidget(self.almacen_2)
+        self.horizontalLayout_2.addWidget(self.btnMinimizar)
 
-        self.gastos_2 = QPushButton(self.iconNameWidget)
-        self.gastos_2.setObjectName(u"gastos_2")
-        self.gastos_2.setFont(font)
+        self.btnRestaurar = QPushButton(self.frameSuperior)
+        self.btnRestaurar.setObjectName(u"btnRestaurar")
+        self.btnRestaurar.setMaximumSize(QSize(16777215, 35))
+        self.btnRestaurar.setStyleSheet(u"QPushButton{\n"
+"border:0px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border:5px solid #ffffff;\n"
+"background-color:#01a78a;\n"
+"}")
         icon2 = QIcon()
-        icon2.addFile(u":/xy/gastos.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.gastos_2.setIcon(icon2)
-        self.gastos_2.setCheckable(True)
-        self.gastos_2.setAutoExclusive(True)
+        icon2.addFile(u"../recursos/pngegg.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnRestaurar.setIcon(icon2)
+        self.btnRestaurar.setIconSize(QSize(32, 32))
 
-        self.verticalLayout_2.addWidget(self.gastos_2)
+        self.horizontalLayout_2.addWidget(self.btnRestaurar)
 
-        self.compras_2 = QPushButton(self.iconNameWidget)
-        self.compras_2.setObjectName(u"compras_2")
-        self.compras_2.setFont(font)
-        self.compras_2.setStyleSheet(u"")
+        self.btnMaximizar = QPushButton(self.frameSuperior)
+        self.btnMaximizar.setObjectName(u"btnMaximizar")
+        self.btnMaximizar.setMaximumSize(QSize(16777215, 35))
+        self.btnMaximizar.setStyleSheet(u"QPushButton{\n"
+"border:0px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border:5px solid #ffffff;\n"
+"background-color:#01a78a;\n"
+"}")
+        self.btnMaximizar.setIcon(icon2)
+        self.btnMaximizar.setIconSize(QSize(32, 32))
+
+        self.horizontalLayout_2.addWidget(self.btnMaximizar)
+
+        self.bntCerrar = QPushButton(self.frameSuperior)
+        self.bntCerrar.setObjectName(u"bntCerrar")
+        self.bntCerrar.setMaximumSize(QSize(16777215, 35))
+        self.bntCerrar.setStyleSheet(u"QPushButton{\n"
+"border:0px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border:5px solid #ffffff;\n"
+"background-color:#01a78a;\n"
+"}")
         icon3 = QIcon()
-        icon3.addFile(u":/xy/carro.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.compras_2.setIcon(icon3)
-        self.compras_2.setCheckable(True)
-        self.compras_2.setAutoExclusive(True)
+        icon3.addFile(u"../recursos/pngwing.com.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bntCerrar.setIcon(icon3)
+        self.bntCerrar.setIconSize(QSize(32, 32))
 
-        self.verticalLayout_2.addWidget(self.compras_2)
+        self.horizontalLayout_2.addWidget(self.bntCerrar)
 
 
-        self.verticalLayout_4.addLayout(self.verticalLayout_2)
+        self.verticalLayout.addWidget(self.frameSuperior)
 
-        self.line_2 = QFrame(self.iconNameWidget)
-        self.line_2.setObjectName(u"line_2")
-        self.line_2.setFrameShape(QFrame.Shape.VLine)
-        self.line_2.setFrameShadow(QFrame.Shadow.Sunken)
+        self.frameInferior = QFrame(self.centralwidget)
+        self.frameInferior.setObjectName(u"frameInferior")
+        self.frameInferior.setFrameShape(QFrame.StyledPanel)
+        self.frameInferior.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout = QHBoxLayout(self.frameInferior)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.frameLateral = QFrame(self.frameInferior)
+        self.frameLateral.setObjectName(u"frameLateral")
+        self.frameLateral.setMinimumSize(QSize(0, 0))
+        self.frameLateral.setMaximumSize(QSize(0, 16777215))
+        self.frameLateral.setToolTipDuration(0)
+        self.frameLateral.setStyleSheet(u"QFrame{\n"
+"background-color:#01a78a;\n"
+"}\n"
+"\n"
+"QPushButton{\n"
+"background-color:#01a78a;\n"
+"border-top-left-radius:20px;\n"
+"border-bottom-left-radius:20px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color:white;\n"
+"border-top-left-radius:20px;\n"
+"border-bottom-left-radius:20px;\n"
+"}\n"
+"")
+        self.frameLateral.setFrameShape(QFrame.StyledPanel)
+        self.frameLateral.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_3 = QVBoxLayout(self.frameLateral)
+        self.verticalLayout_3.setSpacing(0)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.btn_Inicio = QPushButton(self.frameLateral)
+        self.btn_Inicio.setObjectName(u"btn_Inicio")
+        self.btn_Inicio.setMinimumSize(QSize(0, 60))
+        self.btn_Inicio.setMaximumSize(QSize(16777215, 60))
+        font1 = QFont()
+        font1.setFamilies([u"Questrial"])
+        font1.setPointSize(12)
+        self.btn_Inicio.setFont(font1)
+        self.btn_Inicio.setIconSize(QSize(32, 32))
 
-        self.verticalLayout_4.addWidget(self.line_2)
+        self.verticalLayout_3.addWidget(self.btn_Inicio)
 
-        self.pushButton_10 = QPushButton(self.iconNameWidget)
-        self.pushButton_10.setObjectName(u"pushButton_10")
-        self.pushButton_10.setStyleSheet(u"")
+        self.btn_Resumen = QPushButton(self.frameLateral)
+        self.btn_Resumen.setObjectName(u"btn_Resumen")
+        self.btn_Resumen.setMinimumSize(QSize(0, 50))
+        self.btn_Resumen.setMaximumSize(QSize(16777215, 50))
+        self.btn_Resumen.setFont(font1)
         icon4 = QIcon()
-        icon4.addFile(u":/xy/onoff.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.pushButton_10.setIcon(icon4)
-        self.pushButton_10.setCheckable(True)
+        icon4.addFile(u"../recursos/cuadrados.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_Resumen.setIcon(icon4)
+        self.btn_Resumen.setIconSize(QSize(28, 28))
 
-        self.verticalLayout_4.addWidget(self.pushButton_10)
+        self.verticalLayout_3.addWidget(self.btn_Resumen)
 
+        self.btn_Almacen = QPushButton(self.frameLateral)
+        self.btn_Almacen.setObjectName(u"btn_Almacen")
+        self.btn_Almacen.setMinimumSize(QSize(0, 50))
+        self.btn_Almacen.setMaximumSize(QSize(16777215, 50))
+        self.btn_Almacen.setFont(font1)
+        icon5 = QIcon()
+        icon5.addFile(u"../recursos/caja.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_Almacen.setIcon(icon5)
+        self.btn_Almacen.setIconSize(QSize(28, 28))
 
-        self.gridLayout_4.addWidget(self.iconNameWidget, 0, 1, 2, 1)
+        self.verticalLayout_3.addWidget(self.btn_Almacen)
 
-        self.widget_3 = QWidget(self.centralwidget)
-        self.widget_3.setObjectName(u"widget_3")
-        self.gridLayout_3 = QGridLayout(self.widget_3)
-        self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.header = QWidget(self.widget_3)
-        self.header.setObjectName(u"header")
-        self.gridLayout = QGridLayout(self.header)
-        self.gridLayout.setObjectName(u"gridLayout")
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.lineEdit = QLineEdit(self.header)
-        self.lineEdit.setObjectName(u"lineEdit")
+        self.btn_Gastos = QPushButton(self.frameLateral)
+        self.btn_Gastos.setObjectName(u"btn_Gastos")
+        self.btn_Gastos.setMinimumSize(QSize(0, 50))
+        self.btn_Gastos.setMaximumSize(QSize(16777215, 50))
+        self.btn_Gastos.setFont(font1)
+        self.btn_Gastos.setToolTipDuration(0)
+        icon6 = QIcon()
+        icon6.addFile(u"../recursos/gastos.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_Gastos.setIcon(icon6)
+        self.btn_Gastos.setIconSize(QSize(28, 28))
 
-        self.horizontalLayout_2.addWidget(self.lineEdit)
+        self.verticalLayout_3.addWidget(self.btn_Gastos)
 
-        self.pushButton_12 = QPushButton(self.header)
-        self.pushButton_12.setObjectName(u"pushButton_12")
-        self.pushButton_12.setStyleSheet(u"background-color: rgb(1, 167, 138);\n"
-"image: url(:/xy/lupa.png);")
+        self.btn_Compras = QPushButton(self.frameLateral)
+        self.btn_Compras.setObjectName(u"btn_Compras")
+        self.btn_Compras.setMinimumSize(QSize(0, 50))
+        self.btn_Compras.setMaximumSize(QSize(16777215, 50))
+        self.btn_Compras.setFont(font1)
+        icon7 = QIcon()
+        icon7.addFile(u"../recursos/carro.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_Compras.setIcon(icon7)
+        self.btn_Compras.setIconSize(QSize(28, 28))
 
-        self.horizontalLayout_2.addWidget(self.pushButton_12)
+        self.verticalLayout_3.addWidget(self.btn_Compras)
 
-        self.pushButton_13 = QPushButton(self.header)
-        self.pushButton_13.setObjectName(u"pushButton_13")
+        self.verticalSpacer = QSpacerItem(20, 414, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.horizontalLayout_2.addWidget(self.pushButton_13)
+        self.verticalLayout_3.addItem(self.verticalSpacer)
 
+        self.label = QLabel(self.frameLateral)
+        self.label.setObjectName(u"label")
+        self.label.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout.addLayout(self.horizontalLayout_2, 0, 1, 2, 1)
-
-        self.line_7 = QFrame(self.header)
-        self.line_7.setObjectName(u"line_7")
-        self.line_7.setFrameShape(QFrame.Shape.HLine)
-        self.line_7.setFrameShadow(QFrame.Shadow.Sunken)
-
-        self.gridLayout.addWidget(self.line_7, 1, 2, 1, 1)
-
-        self.menu = QPushButton(self.header)
-        self.menu.setObjectName(u"menu")
-        self.menu.setStyleSheet(u"background-color: rgb(1, 167, 138);\n"
-"image: url(:/xy/rayas.png);")
-        self.menu.setCheckable(True)
-        self.menu.setAutoExclusive(True)
-
-        self.gridLayout.addWidget(self.menu, 0, 0, 2, 1)
+        self.verticalLayout_3.addWidget(self.label)
 
 
-        self.gridLayout_3.addWidget(self.header, 0, 0, 1, 1)
+        self.horizontalLayout.addWidget(self.frameLateral)
 
-
-        self.gridLayout_4.addWidget(self.widget_3, 0, 2, 1, 1)
-
-        self.stackedWidget = QStackedWidget(self.centralwidget)
+        self.frameContenedor = QFrame(self.frameInferior)
+        self.frameContenedor.setObjectName(u"frameContenedor")
+        self.frameContenedor.setFrameShape(QFrame.StyledPanel)
+        self.frameContenedor.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_2 = QVBoxLayout(self.frameContenedor)
+        self.verticalLayout_2.setSpacing(0)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.stackedWidget = QStackedWidget(self.frameContenedor)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-        self.almacen_page = QWidget()
-        self.almacen_page.setObjectName(u"almacen_page")
-        self.label_3 = QLabel(self.almacen_page)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(270, 150, 411, 221))
-        font1 = QFont()
-        font1.setPointSize(20)
-        self.label_3.setFont(font1)
-        self.stackedWidget.addWidget(self.almacen_page)
-        self.gastos_page = QWidget()
-        self.gastos_page.setObjectName(u"gastos_page")
-        self.label_4 = QLabel(self.gastos_page)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(350, 160, 411, 221))
-        self.label_4.setFont(font1)
-        self.stackedWidget.addWidget(self.gastos_page)
-        self.compras_page = QWidget()
-        self.compras_page.setObjectName(u"compras_page")
-        self.label_2 = QLabel(self.compras_page)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(320, 190, 411, 221))
-        self.label_2.setFont(font1)
-        self.stackedWidget.addWidget(self.compras_page)
-        self.resumen_page = QWidget()
-        self.resumen_page.setObjectName(u"resumen_page")
-        self.label = QLabel(self.resumen_page)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(270, 160, 411, 221))
-        self.label.setFont(font1)
-        self.stackedWidget.addWidget(self.resumen_page)
+        self.page3 = QWidget()
+        self.page3.setObjectName(u"page3")
+        self.verticalLayout_7 = QVBoxLayout(self.page3)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.btnGastos = QPushButton(self.page3)
+        self.btnGastos.setObjectName(u"btnGastos")
+        font2 = QFont()
+        font2.setFamilies([u"Questrial"])
+        self.btnGastos.setFont(font2)
 
-        self.gridLayout_4.addWidget(self.stackedWidget, 1, 2, 1, 1)
+        self.verticalLayout_7.addWidget(self.btnGastos)
 
-        self.iconOnlyWidget = QWidget(self.centralwidget)
-        self.iconOnlyWidget.setObjectName(u"iconOnlyWidget")
-        self.iconOnlyWidget.setStyleSheet(u"QWidget{\n"
-"	background-color: rgb(1, 167, 138);\n"
-"}\n"
-"\n"
-"QPushButton {\n"
-"	color:white;\n"
-"	text-aling:left;\n"
-"	height:50px;\n"
-"	border:none;\n"
-"}")
-        self.verticalLayout_3 = QVBoxLayout(self.iconOnlyWidget)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.line_3 = QFrame(self.iconOnlyWidget)
-        self.line_3.setObjectName(u"line_3")
-        self.line_3.setFrameShape(QFrame.Shape.VLine)
-        self.line_3.setFrameShadow(QFrame.Shadow.Sunken)
+        self.stackedWidget.addWidget(self.page3)
+        self.page4 = QWidget()
+        self.page4.setObjectName(u"page4")
+        self.verticalLayout_8 = QVBoxLayout(self.page4)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.pushButton = QPushButton(self.page4)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setFont(font2)
 
-        self.verticalLayout_3.addWidget(self.line_3)
+        self.verticalLayout_8.addWidget(self.pushButton)
 
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setSpacing(15)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.resumen_1 = QPushButton(self.iconOnlyWidget)
-        self.resumen_1.setObjectName(u"resumen_1")
-        self.resumen_1.setStyleSheet(u"image: url(:/xy/cuadrados.png);")
-        self.resumen_1.setCheckable(True)
-        self.resumen_1.setAutoExclusive(True)
+        self.stackedWidget.addWidget(self.page4)
+        self.page2 = QWidget()
+        self.page2.setObjectName(u"page2")
+        self.verticalLayout_6 = QVBoxLayout(self.page2)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.btnAlmacen = QPushButton(self.page2)
+        self.btnAlmacen.setObjectName(u"btnAlmacen")
+        self.btnAlmacen.setFont(font2)
 
-        self.verticalLayout.addWidget(self.resumen_1)
+        self.verticalLayout_6.addWidget(self.btnAlmacen)
 
-        self.almacen_1 = QPushButton(self.iconOnlyWidget)
-        self.almacen_1.setObjectName(u"almacen_1")
-        self.almacen_1.setStyleSheet(u"image: url(:/xy/caja.png);")
+        self.stackedWidget.addWidget(self.page2)
+        self.page = QWidget()
+        self.page.setObjectName(u"page")
+        self.verticalLayout_4 = QVBoxLayout(self.page)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.btnInicio = QPushButton(self.page)
+        self.btnInicio.setObjectName(u"btnInicio")
+        self.btnInicio.setFont(font2)
 
-        self.verticalLayout.addWidget(self.almacen_1)
+        self.verticalLayout_4.addWidget(self.btnInicio)
 
-        self.gastos_1 = QPushButton(self.iconOnlyWidget)
-        self.gastos_1.setObjectName(u"gastos_1")
-        self.gastos_1.setStyleSheet(u"image: url(:/xy/gastos.png);")
-        self.gastos_1.setCheckable(True)
-        self.gastos_1.setAutoExclusive(True)
+        self.stackedWidget.addWidget(self.page)
+        self.page1 = QWidget()
+        self.page1.setObjectName(u"page1")
+        self.verticalLayout_5 = QVBoxLayout(self.page1)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.btnResumen = QPushButton(self.page1)
+        self.btnResumen.setObjectName(u"btnResumen")
+        self.btnResumen.setFont(font2)
 
-        self.verticalLayout.addWidget(self.gastos_1)
+        self.verticalLayout_5.addWidget(self.btnResumen)
 
-        self.compras_1 = QPushButton(self.iconOnlyWidget)
-        self.compras_1.setObjectName(u"compras_1")
-        self.compras_1.setStyleSheet(u"image: url(:/xy/carro.png);")
-        self.compras_1.setCheckable(True)
-        self.compras_1.setAutoExclusive(True)
+        self.stackedWidget.addWidget(self.page1)
 
-        self.verticalLayout.addWidget(self.compras_1)
+        self.verticalLayout_2.addWidget(self.stackedWidget)
 
 
-        self.verticalLayout_3.addLayout(self.verticalLayout)
-
-        self.line = QFrame(self.iconOnlyWidget)
-        self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.Shape.VLine)
-        self.line.setFrameShadow(QFrame.Shadow.Sunken)
-
-        self.verticalLayout_3.addWidget(self.line)
-
-        self.pushButton_9 = QPushButton(self.iconOnlyWidget)
-        self.pushButton_9.setObjectName(u"pushButton_9")
-        self.pushButton_9.setStyleSheet(u"image: url(:/xy/onoff.png);")
-        self.pushButton_9.setCheckable(True)
-
-        self.verticalLayout_3.addWidget(self.pushButton_9)
+        self.horizontalLayout.addWidget(self.frameContenedor)
 
 
-        self.gridLayout_4.addWidget(self.iconOnlyWidget, 0, 0, 2, 1)
+        self.verticalLayout.addWidget(self.frameInferior)
 
-        Panel.setCentralWidget(self.centralwidget)
-        self.menubar = QMenuBar(Panel)
-        self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1189, 22))
-        Panel.setMenuBar(self.menubar)
-        self.statusbar = QStatusBar(Panel)
-        self.statusbar.setObjectName(u"statusbar")
-        Panel.setStatusBar(self.statusbar)
+        MainWindow.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(Panel)
-        self.menu.toggled.connect(self.iconOnlyWidget.setHidden)
-        self.menu.toggled.connect(self.iconNameWidget.setVisible)
-        self.compras_1.toggled.connect(self.compras_2.setChecked)
-        self.gastos_1.toggled.connect(self.gastos_2.setChecked)
-        self.almacen_1.toggled.connect(self.almacen_2.setChecked)
-        self.resumen_1.toggled.connect(self.resumen_2.setChecked)
-        self.resumen_2.toggled.connect(self.resumen_1.setChecked)
-        self.almacen_2.toggled.connect(self.almacen_1.setChecked)
-        self.gastos_2.toggled.connect(self.gastos_1.setChecked)
-        self.compras_2.toggled.connect(self.compras_1.setChecked)
-        self.menu.toggled.connect(self.iconOnlyWidget.setHidden)
-        self.pushButton_9.toggled.connect(Panel.close)
-        self.pushButton_10.toggled.connect(Panel.close)
+        self.retranslateUi(MainWindow)
 
-        QMetaObject.connectSlotsByName(Panel)
+        self.stackedWidget.setCurrentIndex(1)
+
+
+        QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
-    def retranslateUi(self, Panel):
-        Panel.setWindowTitle(QCoreApplication.translate("Panel", u"MainWindow", None))
-        self.resumen_2.setText(QCoreApplication.translate("Panel", u"Resumen", None))
-        self.almacen_2.setText(QCoreApplication.translate("Panel", u"Almac\u00e9n", None))
-        self.gastos_2.setText(QCoreApplication.translate("Panel", u"Gastos", None))
-        self.compras_2.setText(QCoreApplication.translate("Panel", u"Compras", None))
-        self.pushButton_10.setText(QCoreApplication.translate("Panel", u" Salir", None))
-        self.pushButton_12.setText("")
-        self.pushButton_13.setText(QCoreApplication.translate("Panel", u"PushButton", None))
-        self.menu.setText("")
-        self.label_3.setText(QCoreApplication.translate("Panel", u"almacen page", None))
-        self.label_4.setText(QCoreApplication.translate("Panel", u"gastos page", None))
-        self.label_2.setText(QCoreApplication.translate("Panel", u"compras page", None))
-        self.label.setText(QCoreApplication.translate("Panel", u"resumen page", None))
-        self.resumen_1.setText("")
-        self.almacen_1.setText("")
-        self.gastos_1.setText("")
-        self.compras_1.setText("")
-        self.pushButton_9.setText("")
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.bntMenu.setText(QCoreApplication.translate("MainWindow", u"MEN\u00da", None))
+        self.btnMinimizar.setText("")
+        self.btnRestaurar.setText("")
+        self.btnMaximizar.setText("")
+        self.bntCerrar.setText("")
+        self.btn_Inicio.setText(QCoreApplication.translate("MainWindow", u"INICIO", None))
+        self.btn_Resumen.setText(QCoreApplication.translate("MainWindow", u"    RESUMEN", None))
+        self.btn_Almacen.setText(QCoreApplication.translate("MainWindow", u"    ALMAC\u00c9N", None))
+        self.btn_Gastos.setText(QCoreApplication.translate("MainWindow", u"       GASTOS", None))
+        self.btn_Compras.setText(QCoreApplication.translate("MainWindow", u"    COMPRAS", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.btnGastos.setText(QCoreApplication.translate("MainWindow", u"GASTOS", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"COMPRAS", None))
+        self.btnAlmacen.setText(QCoreApplication.translate("MainWindow", u"ALMACEN", None))
+        self.btnInicio.setText(QCoreApplication.translate("MainWindow", u"INICIO", None))
+        self.btnResumen.setText(QCoreApplication.translate("MainWindow", u"RESUMEN", None))
     # retranslateUi
 
