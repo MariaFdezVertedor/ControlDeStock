@@ -27,7 +27,7 @@ class Login():
             usuData = UsuarioData()
             res= usuData.login(usu)
             if res:
-                self.main = MainWindow()
+                self.ui = MainWindow()
                 self.login.hide()
             else:
                 self.login.lblMensaje.setText("Login fallido")

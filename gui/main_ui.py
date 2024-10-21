@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainWobVHR.ui'
+## Form generated from reading UI file 'main.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.3
+## Created by: Qt User Interface Compiler version 6.7.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -61,12 +61,12 @@ class Ui_MainWindow(object):
 "background-color:#ffffff;\n"
 "}")
         icon = QIcon()
-        icon.addFile(u"../recursos/rayas.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"../recursos/rayas.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.bntMenu.setIcon(icon)
 
         self.horizontalLayout_2.addWidget(self.bntMenu)
 
-        self.horizontalSpacer = QSpacerItem(830, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(830, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer)
 
@@ -82,7 +82,7 @@ class Ui_MainWindow(object):
 "background-color:#01a78a;\n"
 "}")
         icon1 = QIcon()
-        icon1.addFile(u"../recursos/minim.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u"../recursos/minim.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.btnMinimizar.setIcon(icon1)
         self.btnMinimizar.setIconSize(QSize(32, 32))
 
@@ -100,7 +100,7 @@ class Ui_MainWindow(object):
 "background-color:#01a78a;\n"
 "}")
         icon2 = QIcon()
-        icon2.addFile(u"../recursos/pngegg.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u"../recursos/pngegg.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.btnRestaurar.setIcon(icon2)
         self.btnRestaurar.setIconSize(QSize(32, 32))
 
@@ -134,7 +134,7 @@ class Ui_MainWindow(object):
 "background-color:#01a78a;\n"
 "}")
         icon3 = QIcon()
-        icon3.addFile(u"../recursos/pngwing.com.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u"../recursos/pngwing.com.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.bntCerrar.setIcon(icon3)
         self.bntCerrar.setIconSize(QSize(32, 32))
 
@@ -196,7 +196,7 @@ class Ui_MainWindow(object):
         self.btn_Resumen.setMaximumSize(QSize(16777215, 50))
         self.btn_Resumen.setFont(font1)
         icon4 = QIcon()
-        icon4.addFile(u"../recursos/cuadrados.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(u"../recursos/cuadrados.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.btn_Resumen.setIcon(icon4)
         self.btn_Resumen.setIconSize(QSize(28, 28))
 
@@ -208,7 +208,7 @@ class Ui_MainWindow(object):
         self.btn_Almacen.setMaximumSize(QSize(16777215, 50))
         self.btn_Almacen.setFont(font1)
         icon5 = QIcon()
-        icon5.addFile(u"../recursos/caja.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(u"../recursos/caja.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.btn_Almacen.setIcon(icon5)
         self.btn_Almacen.setIconSize(QSize(28, 28))
 
@@ -221,7 +221,7 @@ class Ui_MainWindow(object):
         self.btn_Gastos.setFont(font1)
         self.btn_Gastos.setToolTipDuration(0)
         icon6 = QIcon()
-        icon6.addFile(u"../recursos/gastos.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon6.addFile(u"../recursos/gastos.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.btn_Gastos.setIcon(icon6)
         self.btn_Gastos.setIconSize(QSize(28, 28))
 
@@ -233,13 +233,13 @@ class Ui_MainWindow(object):
         self.btn_Compras.setMaximumSize(QSize(16777215, 50))
         self.btn_Compras.setFont(font1)
         icon7 = QIcon()
-        icon7.addFile(u"../recursos/carro.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon7.addFile(u"../recursos/carro.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.btn_Compras.setIcon(icon7)
         self.btn_Compras.setIconSize(QSize(28, 28))
 
         self.verticalLayout_3.addWidget(self.btn_Compras)
 
-        self.verticalSpacer = QSpacerItem(20, 414, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 414, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
@@ -280,11 +280,11 @@ class Ui_MainWindow(object):
         self.page4.setObjectName(u"page4")
         self.verticalLayout_8 = QVBoxLayout(self.page4)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.pushButton = QPushButton(self.page4)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setFont(font2)
+        self.btnCompras = QPushButton(self.page4)
+        self.btnCompras.setObjectName(u"btnCompras")
+        self.btnCompras.setFont(font2)
 
-        self.verticalLayout_8.addWidget(self.pushButton)
+        self.verticalLayout_8.addWidget(self.btnCompras)
 
         self.stackedWidget.addWidget(self.page4)
         self.page2 = QWidget()
@@ -333,7 +333,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -353,7 +353,7 @@ class Ui_MainWindow(object):
         self.btn_Compras.setText(QCoreApplication.translate("MainWindow", u"    COMPRAS", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.btnGastos.setText(QCoreApplication.translate("MainWindow", u"GASTOS", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"COMPRAS", None))
+        self.btnCompras.setText(QCoreApplication.translate("MainWindow", u"COMPRAS", None))
         self.btnAlmacen.setText(QCoreApplication.translate("MainWindow", u"ALMACEN", None))
         self.btnInicio.setText(QCoreApplication.translate("MainWindow", u"INICIO", None))
         self.btnResumen.setText(QCoreApplication.translate("MainWindow", u"RESUMEN", None))
