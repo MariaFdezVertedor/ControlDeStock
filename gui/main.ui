@@ -569,7 +569,7 @@ border-bottom-left-radius:20px;
              <string notr="true">background-color: rgb(255, 255, 255);</string>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="page3">
              <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -605,6 +605,35 @@ border-bottom-left-radius:20px;
             </widget>
             <widget class="QWidget" name="page2">
              <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <widget class="QTableWidget" name="tableWidgetArticulos">
+                <column>
+                 <property name="text">
+                  <string>id</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Nombre</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Categoría</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Precio</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Existencias</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
               <item>
                <widget class="QPushButton" name="btnAlmacen">
                 <property name="font">

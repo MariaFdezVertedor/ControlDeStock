@@ -15,10 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QStackedWidget, QVBoxLayout, QWidget)
-from recursos import imagenes_rc
+from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QHeaderView,
+    QLabel, QMainWindow, QPushButton, QSizePolicy,
+    QSpacerItem, QStackedWidget, QTableWidget, QTableWidgetItem,
+    QVBoxLayout, QWidget)
+import imagenes_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -291,6 +292,23 @@ class Ui_MainWindow(object):
         self.page2.setObjectName(u"page2")
         self.verticalLayout_6 = QVBoxLayout(self.page2)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.tableWidgetArticulos = QTableWidget(self.page2)
+        if (self.tableWidgetArticulos.columnCount() < 5):
+            self.tableWidgetArticulos.setColumnCount(5)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableWidgetArticulos.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tableWidgetArticulos.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tableWidgetArticulos.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tableWidgetArticulos.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.tableWidgetArticulos.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        self.tableWidgetArticulos.setObjectName(u"tableWidgetArticulos")
+
+        self.verticalLayout_6.addWidget(self.tableWidgetArticulos)
+
         self.btnAlmacen = QPushButton(self.page2)
         self.btnAlmacen.setObjectName(u"btnAlmacen")
         self.btnAlmacen.setFont(font2)
@@ -333,7 +351,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -354,6 +372,16 @@ class Ui_MainWindow(object):
         self.label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.btnGastos.setText(QCoreApplication.translate("MainWindow", u"GASTOS", None))
         self.btnCompras.setText(QCoreApplication.translate("MainWindow", u"COMPRAS", None))
+        ___qtablewidgetitem = self.tableWidgetArticulos.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"id", None));
+        ___qtablewidgetitem1 = self.tableWidgetArticulos.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Nombre", None));
+        ___qtablewidgetitem2 = self.tableWidgetArticulos.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Categor\u00eda", None));
+        ___qtablewidgetitem3 = self.tableWidgetArticulos.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Precio", None));
+        ___qtablewidgetitem4 = self.tableWidgetArticulos.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Existencias", None));
         self.btnAlmacen.setText(QCoreApplication.translate("MainWindow", u"ALMACEN", None))
         self.btnInicio.setText(QCoreApplication.translate("MainWindow", u"INICIO", None))
         self.btnResumen.setText(QCoreApplication.translate("MainWindow", u"RESUMEN", None))

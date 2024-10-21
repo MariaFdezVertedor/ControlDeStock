@@ -4,7 +4,11 @@ from model.usuario import Usuario
 class UsuarioData():
     
     def login(self, usuario:Usuario):
-        self.db = con.Conexion().conectar()
+        self.db = con.Conexion().con
+        if self.db is None:
+            print("Error de conexión")
+            return None
+        
         self.cursor = self.db.cursor()
         res = self.cursor.execute("SELECT * FROM usuarios WHERE usuario = '{}' AND clave = '{}'".format(usuario._usuario, usuario._clave))
         fila = res.fetchone()
