@@ -105,6 +105,8 @@ class Conexion():
             ('agua', None),
             ('cerveza', None),
             ('alcohol', None),
+            ('vino', None),
+            ('cava', None)
         ]
         
         cur = self.con.cursor()
@@ -131,20 +133,15 @@ class Conexion():
             ('Ginebra', alcohol_id),
             ('Ron', alcohol_id),
             ('Whisky', alcohol_id),
-            ('Vino', alcohol_id),
-            ('Cava', alcohol_id),
             ('Tequila', alcohol_id),
-            ('Champagne', alcohol_id),
             ('Vodka', alcohol_id),
         ]
 
         cur.executemany("INSERT INTO categorias (nombre, categoria_padre_id) VALUES (?, ?)", subcategorias_alcohol)
 
-        #Obtener ID de 'vino' y 'cava' para crear subcategorías
+        #Obtener ID de 'vino' para crear subcategorías
         cur.execute("SELECT id FROM categorias WHERE nombre = ?", ('vino',))
         vino_id = cur.fetchone()[0]
-        cur.execute("SELECT id FROM categorias WHERE nombre = ?", ('cava',))
-        cava_id = cur.fetchone()[0]
 
         #Insertar subcategorías para 'vino'
         subcategorias_vino = [

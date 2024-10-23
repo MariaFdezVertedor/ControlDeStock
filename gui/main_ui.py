@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1189, 747)
+        MainWindow.resize(1324, 744)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -292,6 +292,109 @@ class Ui_MainWindow(object):
         self.page2.setObjectName(u"page2")
         self.verticalLayout_6 = QVBoxLayout(self.page2)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setSpacing(0)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.btnAlmacen = QPushButton(self.page2)
+        self.btnAlmacen.setObjectName(u"btnAlmacen")
+        self.btnAlmacen.setMinimumSize(QSize(800, 0))
+        self.btnAlmacen.setFont(font2)
+        self.btnAlmacen.setStyleSheet(u"QPushButton {\n"
+"    background-color:#ffffff;\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 15px;\n"
+"    padding: 4px;\n"
+"    color: #01a78a;\n"
+"    font-size: 14px;\n"
+"    font-family: \"Questrial\";\n"
+"    text-align: center;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgba(1, 167, 138, 0.8);\n"
+"    border: 2px solid rgba(1, 167, 138, 0.5);\n"
+"    color: rgba(255, 255, 255, 0.9);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(1, 167, 138, 0.6);\n"
+"    border: 2px solid rgba(1, 167, 138, 0.4);\n"
+"}\n"
+"")
+
+        self.horizontalLayout_3.addWidget(self.btnAlmacen)
+
+        self.horizontalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_3)
+
+        self.btnModificar = QPushButton(self.page2)
+        self.btnModificar.setObjectName(u"btnModificar")
+        self.btnModificar.setMinimumSize(QSize(180, 0))
+        self.btnModificar.setMaximumSize(QSize(180, 120))
+        self.btnModificar.setFont(font2)
+        self.btnModificar.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgba(1, 167, 138, 1);\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 30px;\n"
+"    padding: 4px;\n"
+"    color: white;\n"
+"    font-size: 14px;\n"
+"    font-family: \"Questrial\";\n"
+"    text-align: center;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgba(1, 167, 138, 0.8);\n"
+"    border: 2px solid rgba(1, 167, 138, 0.5);\n"
+"    color: rgba(255, 255, 255, 0.9);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(1, 167, 138, 0.6);\n"
+"    border: 2px solid rgba(1, 167, 138, 0.4);\n"
+"}\n"
+"")
+
+        self.horizontalLayout_3.addWidget(self.btnModificar)
+
+        self.horizontalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_2)
+
+        self.btnActualizar = QPushButton(self.page2)
+        self.btnActualizar.setObjectName(u"btnActualizar")
+        self.btnActualizar.setMinimumSize(QSize(140, 25))
+        self.btnActualizar.setMaximumSize(QSize(140, 25))
+        self.btnActualizar.setFont(font2)
+        self.btnActualizar.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgba(1, 167, 138, 1);\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 15px;\n"
+"    padding: 4px;\n"
+"    color: white;\n"
+"    font-size: 14px;\n"
+"    font-family: \"Questrial\";\n"
+"    text-align: center;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgba(1, 167, 138, 0.8);\n"
+"    border: 2px solid rgba(1, 167, 138, 0.5);\n"
+"    color: rgba(255, 255, 255, 0.9);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(1, 167, 138, 0.6);\n"
+"    border: 2px solid rgba(1, 167, 138, 0.4);\n"
+"}\n"
+"")
+
+        self.horizontalLayout_3.addWidget(self.btnActualizar)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_3)
+
         self.tableWidgetArticulos = QTableWidget(self.page2)
         if (self.tableWidgetArticulos.columnCount() < 5):
             self.tableWidgetArticulos.setColumnCount(5)
@@ -306,14 +409,40 @@ class Ui_MainWindow(object):
         __qtablewidgetitem4 = QTableWidgetItem()
         self.tableWidgetArticulos.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.tableWidgetArticulos.setObjectName(u"tableWidgetArticulos")
+        self.tableWidgetArticulos.setFont(font2)
+        self.tableWidgetArticulos.setStyleSheet(u"QTableWidget {\n"
+"    background-color: rgba(255, 255, 255, 1);\n"
+"    border: 2px solid gray;\n"
+"    border-radius: 10px;\n"
+"    font-family: \"Questrial\";\n"
+"    font-size: 14px;\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"    padding: 5px;\n"
+"    border: 1px solid lightgray;\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected {\n"
+"    background-color: rgba(1, 167, 138, 0.5);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QTableWidget::item:hover {\n"
+"    background-color: rgba(1, 167, 138, 0.2);\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: rgba(1, 167, 138, 1);\n"
+"    color: white;\n"
+"    font-size: 16px;\n"
+"    padding: 5px;\n"
+"    border: none;\n"
+"}\n"
+"")
+        self.tableWidgetArticulos.horizontalHeader().setStretchLastSection(True)
 
         self.verticalLayout_6.addWidget(self.tableWidgetArticulos)
-
-        self.btnAlmacen = QPushButton(self.page2)
-        self.btnAlmacen.setObjectName(u"btnAlmacen")
-        self.btnAlmacen.setFont(font2)
-
-        self.verticalLayout_6.addWidget(self.btnAlmacen)
 
         self.stackedWidget.addWidget(self.page2)
         self.page = QWidget()
@@ -351,7 +480,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -372,6 +501,9 @@ class Ui_MainWindow(object):
         self.label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.btnGastos.setText(QCoreApplication.translate("MainWindow", u"GASTOS", None))
         self.btnCompras.setText(QCoreApplication.translate("MainWindow", u"COMPRAS", None))
+        self.btnAlmacen.setText(QCoreApplication.translate("MainWindow", u"ALMACEN", None))
+        self.btnModificar.setText(QCoreApplication.translate("MainWindow", u"MODICAR EXISTENCIAS", None))
+        self.btnActualizar.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))
         ___qtablewidgetitem = self.tableWidgetArticulos.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"id", None));
         ___qtablewidgetitem1 = self.tableWidgetArticulos.horizontalHeaderItem(1)
@@ -382,7 +514,6 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Precio", None));
         ___qtablewidgetitem4 = self.tableWidgetArticulos.horizontalHeaderItem(4)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Existencias", None));
-        self.btnAlmacen.setText(QCoreApplication.translate("MainWindow", u"ALMACEN", None))
         self.btnInicio.setText(QCoreApplication.translate("MainWindow", u"INICIO", None))
         self.btnResumen.setText(QCoreApplication.translate("MainWindow", u"RESUMEN", None))
     # retranslateUi

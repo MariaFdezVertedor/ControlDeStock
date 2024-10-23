@@ -1,6 +1,15 @@
 <RCC>
   <qresource prefix="xy">
+    <file>agregar.png</file>
+    <file>boton-menos.png</file>
     <file>minim.png</file>
+    <file>refresco.png</file>
+    <file>jugo.png</file>
+    <file>alcohol.png</file>
+    <file>cerveza.png</file>
+    <file>champagne.png</file>
+    <file>botella-de-vino.png</file>
+    <file>agua.png</file>
     <file>pngwing.com.png</file>
     <file>pngegg.png</file>
     <file>caja.png</file>
