@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QDialog, QFram
     QHBoxLayout, QHeaderView, QLabel, QPushButton,
     QSizePolicy, QSpacerItem, QSpinBox, QSplitter,
     QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
-from recursos import imagenes_rc
+import imagenes_rc
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -303,6 +303,8 @@ class Ui_Dialog(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.lbl = QLabel(self.frame_3)
         self.lbl.setObjectName(u"lbl")
+        self.lbl.setMinimumSize(QSize(200, 0))
+        self.lbl.setMaximumSize(QSize(200, 16777215))
         font1 = QFont()
         font1.setFamilies([u"Questrial"])
         font1.setPointSize(12)
@@ -313,6 +315,7 @@ class Ui_Dialog(object):
         self.lblCategoria = QLabel(self.frame_3)
         self.lblCategoria.setObjectName(u"lblCategoria")
         self.lblCategoria.setFont(font1)
+        self.lblCategoria.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout.addWidget(self.lblCategoria)
 
@@ -554,8 +557,8 @@ class Ui_Dialog(object):
         self.btnCerveza.setText("")
         self.btnAgua.setText("")
         self.btnZumo.setText("")
-        self.lbl.setText(QCoreApplication.translate("Dialog", u"    Categoria seleccionada", None))
-        self.lblCategoria.setText(QCoreApplication.translate("Dialog", u"-", None))
+        self.lbl.setText(QCoreApplication.translate("Dialog", u"    Categoria seleccionada:", None))
+        self.lblCategoria.setText("")
         self.btnAgregar.setText("")
         self.btnRestar.setText("")
         ___qtablewidgetitem = self.tableWidgetPreview.horizontalHeaderItem(0)
