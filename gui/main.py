@@ -1,64 +1,71 @@
 import sys
 from PyQt6 import uic
-import qt6_applications
 from PyQt6.QtCore import Qt, QEasingCurve, QPropertyAnimation
-from PyQt6.QtWidgets import QMessageBox, QApplication, QStyleOptionSizeGrip, QMainWindow, QSizeGrip, QTableWidgetItem
+from PyQt6.QtWidgets import QMessageBox, QApplication, QMainWindow, QSizeGrip, QTableWidgetItem
 import sqlite3
-from data.usuario import UsuarioData
-from model.usuario import Usuario
-from recursos import imagenes_rc
+from gui.modificar import modificarWindow
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = uic.loadUi("gui/main.ui")
-        self.ui.showMaximized()
+        self.setup_ui()
+        self.setup_connections()
 
-        # Eliminar barra de titulo - opacidad
-        self.setWindowFlags(Qt.WindowType.FramelessWindowHint)  
+    # Configuración inicial de la interfaz
+    def setup_ui(self):
+        self.ui.showMaximized()
+        self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
         self.setWindowOpacity(0.95)
         
-        # Sizegrip
+        # Configuración del QSizeGrip para redimensionar la ventana
         self.gripSize = 10
         self.grip = QSizeGrip(self.ui)
-        self.grip.resize(self.gripSize, self.gripSize)
-        self.grip.move(self.width() - self.gripSize, self.height() - self.gripSize)
+        self.update_grip_position()
 
-        # Mover ventana
-        self.ui.frameSuperior.mouseMoveEvent = self.moveWindow
-
-        # Acceder a las páginas
-        self.ui.btn_Inicio.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page))
-        self.ui.btn_Resumen.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page1))
-        
-        # Modifica la conexión para Almacén
-        self.ui.btn_Almacen.clicked.connect(self.mostrarAlmacen)
-
-        self.ui.btn_Gastos.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page3))
-        self.ui.btn_Compras.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page4))
-        
-        # Control barra de titulos
-        self.ui.btnMinimizar.clicked.connect(self.controlMinimizar)
-        self.ui.btnRestaurar.clicked.connect(self.controlbtnNormal)
-        self.ui.btnMaximizar.clicked.connect(self.controlMaximizar)
-        self.ui.bntCerrar.clicked.connect(lambda: self.close())
-
+        # Ocultar el botón de restaurar inicialmente
         self.ui.btnRestaurar.hide()
 
-        # Menu lateral
+    # Conexiones de los botones y elementos de la interfaz
+    def setup_connections(self):
+        # Acceder a las páginas del stackedWidget
+        self.ui.btn_Inicio.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page))
+        self.ui.btn_Resumen.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page1))
+        self.ui.btn_Almacen.clicked.connect(self.mostrarAlmacen)
+        self.ui.btnModificar.clicked.connect(self.mostrarModificar)
+        self.ui.btn_Gastos.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page3))
+        self.ui.btn_Compras.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page4))
+
+        # Controles de la barra de título
+        self.ui.btnMinimizar.clicked.connect(self.controlMinimizar)
+        self.ui.btnRestaurar.clicked.connect(self.controlRestaurar)
+        self.ui.btnMaximizar.clicked.connect(self.controlMaximizar)
+        self.ui.bntCerrar.clicked.connect(self.close)
+
+        # Menú lateral
         self.ui.bntMenu.clicked.connect(self.moverMenu)
+
+        # Evento para mover la ventana
+        self.ui.frameSuperior.mouseMoveEvent = self.moveWindow
+
+    # Actualiza la posición del grip de redimensionamiento
+    def update_grip_position(self):
+        rect = self.rect()
+        self.grip.resize(self.gripSize, self.gripSize)
+        self.grip.move(rect.right() - self.gripSize, rect.bottom() - self.gripSize)
 
     # Método para minimizar la ventana
     def controlMinimizar(self):
         self.showMinimized()
 
-    # Método para restaurar ventana
-    def controlbtnNormal(self):
+    # Método para restaurar la ventana
+    def controlRestaurar(self):
         self.showNormal()
         self.ui.btnRestaurar.hide()
         self.ui.btnMaximizar.show()
 
-    # Método para maximizar ventana
+    # Método para maximizar la ventana
     def controlMaximizar(self):
         self.showMaximized()
         self.ui.btnMaximizar.hide()
@@ -66,52 +73,48 @@ class MainWindow(QMainWindow):
 
     # Método para mover el menú lateral
     def moverMenu(self):
-        witdh = self.ui.frameLateral.width()
-        normal = 0
-        extender = 200
-        if witdh == 200:
-            extender = normal
+        width = self.ui.frameLateral.width()
+        new_width = 0 if width == 200 else 200
 
         self.animacion = QPropertyAnimation(self.ui.frameLateral, b"minimumWidth")
         self.animacion.setDuration(300)
-        self.animacion.setStartValue(witdh)
-        self.animacion.setEndValue(extender)
+        self.animacion.setStartValue(width)
+        self.animacion.setEndValue(new_width)
         self.animacion.setEasingCurve(QEasingCurve.Type.InOutQuart)
         self.animacion.start()
 
-    # Método para manejar el evento de redimensionamiento de la ventana
+    # Redimensionar el grip de la ventana cuando cambia el tamaño
     def resizeEvent(self, event):
-        rect = self.rect()
-        self.grip.move(rect.right() - self.gripSize, rect.bottom() - self.gripSize)
+        self.update_grip_position()
 
-    # Método para capturar el clic del mouse
+    # Capturar clic del mouse para mover la ventana
     def mousePressEvent(self, event):
         self.clickPosition = event.globalPosition().toPoint()
 
-    # Método para mover la ventana
+    # Mover la ventana
     def moveWindow(self, event):
-        if self.isMaximized() == False:
-            if event.buttons() == qt6_applications.MouseButton.LeftButton:
-                self.move(self.pos() + event.globalPosition() - self.clickPosition)
-                self.clickPosition = event.globalPosition()
-                event.accept()
+        if not self.isMaximized() and event.buttons() == Qt.MouseButton.LeftButton:
+            self.move(self.pos() + event.globalPosition().toPoint() - self.clickPosition)
+            self.clickPosition = event.globalPosition().toPoint()
+            event.accept()
 
-            if event.globalPos().y() <= 20:
-                self.showMaximized()
-
-    # Método para mostrar la página de "Almacén" y cargar los artículos
+    # Mostrar la página de "Almacén" y cargar artículos
     def mostrarAlmacen(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.page2)  # Cambiar a la pestaña Almacén
-        self.cargar_articulos()  # Llamar al método cargar_articulos cuando se cambie a la pestaña
+        self.ui.stackedWidget.setCurrentWidget(self.ui.page2)
+        self.cargar_articulos()
 
-    # Método para cargar los artículos en la tabla
+    # Mostrar la ventana de modificar
+    def mostrarModificar(self):
+        self.modificar_window = modificarWindow()
+        self.modificar_window.show()
+
+    # Cargar los artículos en la tabla
     def cargar_articulos(self):
         try:
-            # Conectar a la base de datos
             con = sqlite3.connect("stock.db")
             cur = con.cursor()
 
-            # Obtener los artículos
+            # Ejecutar la consulta para obtener los artículos
             cur.execute("""
                 SELECT a.id, a.nombre, c.nombre, a.precio, a.existencias 
                 FROM articulos a 
@@ -119,21 +122,20 @@ class MainWindow(QMainWindow):
             """)
             articulos = cur.fetchall()
 
-            # Limpiar la tabla antes de cargar nuevos datos
+            # Limpiar la tabla antes de cargar los datos
             self.ui.tableWidgetArticulos.setRowCount(0)
 
-            # Rellenar la tabla
+            # Rellenar la tabla con los datos obtenidos
             for articulo in articulos:
                 row_position = self.ui.tableWidgetArticulos.rowCount()
                 self.ui.tableWidgetArticulos.insertRow(row_position)
                 for column, data in enumerate(articulo):
                     self.ui.tableWidgetArticulos.setItem(row_position, column, QTableWidgetItem(str(data)))
 
-            # Cerrar la conexión
             cur.close()
             con.close()
 
-        except Exception as e:
+        except sqlite3.Error as e:
             QMessageBox.critical(self, "Error", f"No se pudieron cargar los artículos: {str(e)}")
 
 

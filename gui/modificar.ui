@@ -461,7 +461,7 @@ QPushButton:pressed {
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLabel" name="lblCategoria">
+         <widget class="QLabel" name="lbl">
           <property name="font">
            <font>
             <family>Questrial</family>
@@ -474,7 +474,7 @@ QPushButton:pressed {
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_4">
+         <widget class="QLabel" name="lblCategoria">
           <property name="font">
            <font>
             <family>Questrial</family>
@@ -559,7 +559,7 @@ QSpinBox::down-button:pressed {
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="btnAgregar">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -608,7 +608,7 @@ QPushButton:pressed {
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="btnRestar">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -752,14 +752,61 @@ QHeaderView::section {
         </column>
         <column>
          <property name="text">
-          <string>Existencias</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
           <string>Precio</string>
          </property>
         </column>
+       </widget>
+      </item>
+      <item alignment="Qt::AlignHCenter">
+       <widget class="QPushButton" name="btnCorfirmar">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Questrial</family>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
+        <property name="toolTipDuration">
+         <number>-4</number>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: rgba(1, 167, 138, 1);
+    border: 1px solid gray;
+    border-radius: 15px;
+    padding: 4px;
+    color: white;
+    font-size: 12px;
+    font-family: &quot;Questrial&quot;;
+    text-align: center;
+}
+
+QPushButton:hover {
+    background-color: rgba(1, 167, 138, 0.8);
+    border: 2px solid rgba(1, 167, 138, 0.5);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+QPushButton:pressed {
+    background-color: rgba(1, 167, 138, 0.6);
+    border: 2px solid rgba(1, 167, 138, 0.4);
+}
+</string>
+        </property>
+        <property name="text">
+         <string>CONFIRMAR CAMBIOS</string>
+        </property>
        </widget>
       </item>
      </layout>

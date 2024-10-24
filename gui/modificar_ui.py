@@ -301,20 +301,20 @@ class Ui_Dialog(object):
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.lblCategoria = QLabel(self.frame_3)
-        self.lblCategoria.setObjectName(u"lblCategoria")
+        self.lbl = QLabel(self.frame_3)
+        self.lbl.setObjectName(u"lbl")
         font1 = QFont()
         font1.setFamilies([u"Questrial"])
         font1.setPointSize(12)
+        self.lbl.setFont(font1)
+
+        self.horizontalLayout.addWidget(self.lbl)
+
+        self.lblCategoria = QLabel(self.frame_3)
+        self.lblCategoria.setObjectName(u"lblCategoria")
         self.lblCategoria.setFont(font1)
 
         self.horizontalLayout.addWidget(self.lblCategoria)
-
-        self.label_4 = QLabel(self.frame_3)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setFont(font1)
-
-        self.horizontalLayout.addWidget(self.label_4)
 
         self.spinBox = QSpinBox(self.frame_3)
         self.spinBox.setObjectName(u"spinBox")
@@ -375,11 +375,11 @@ class Ui_Dialog(object):
 
         self.horizontalLayout.addWidget(self.spinBox)
 
-        self.pushButton = QPushButton(self.frame_3)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMinimumSize(QSize(30, 30))
-        self.pushButton.setMaximumSize(QSize(30, 30))
-        self.pushButton.setStyleSheet(u"QPushButton {\n"
+        self.btnAgregar = QPushButton(self.frame_3)
+        self.btnAgregar.setObjectName(u"btnAgregar")
+        self.btnAgregar.setMinimumSize(QSize(30, 30))
+        self.btnAgregar.setMaximumSize(QSize(30, 30))
+        self.btnAgregar.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
 "    border: 1px solid gray;\n"
 "    border-radius: 15px;\n"
@@ -405,15 +405,15 @@ class Ui_Dialog(object):
 "")
         icon = QIcon()
         icon.addFile(u":/xy/agregar.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.pushButton.setIcon(icon)
+        self.btnAgregar.setIcon(icon)
 
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.horizontalLayout.addWidget(self.btnAgregar)
 
-        self.pushButton_2 = QPushButton(self.frame_3)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setMinimumSize(QSize(30, 30))
-        self.pushButton_2.setMaximumSize(QSize(30, 30))
-        self.pushButton_2.setStyleSheet(u"QPushButton {\n"
+        self.btnRestar = QPushButton(self.frame_3)
+        self.btnRestar.setObjectName(u"btnRestar")
+        self.btnRestar.setMinimumSize(QSize(30, 30))
+        self.btnRestar.setMaximumSize(QSize(30, 30))
+        self.btnRestar.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgba(255, 0, 0, 1);\n"
 "    border: 1px solid gray;\n"
 "    border-radius: 15px;\n"
@@ -439,9 +439,9 @@ class Ui_Dialog(object):
 "")
         icon1 = QIcon()
         icon1.addFile(u":/xy/boton-menos.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.pushButton_2.setIcon(icon1)
+        self.btnRestar.setIcon(icon1)
 
-        self.horizontalLayout.addWidget(self.pushButton_2)
+        self.horizontalLayout.addWidget(self.btnRestar)
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout)
@@ -451,8 +451,8 @@ class Ui_Dialog(object):
         self.verticalLayout_2.addItem(self.horizontalSpacer)
 
         self.tableWidgetPreview = QTableWidget(self.frame_3)
-        if (self.tableWidgetPreview.columnCount() < 5):
-            self.tableWidgetPreview.setColumnCount(5)
+        if (self.tableWidgetPreview.columnCount() < 4):
+            self.tableWidgetPreview.setColumnCount(4)
         __qtablewidgetitem = QTableWidgetItem()
         self.tableWidgetPreview.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
@@ -461,8 +461,6 @@ class Ui_Dialog(object):
         self.tableWidgetPreview.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         __qtablewidgetitem3 = QTableWidgetItem()
         self.tableWidgetPreview.setHorizontalHeaderItem(3, __qtablewidgetitem3)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.tableWidgetPreview.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.tableWidgetPreview.setObjectName(u"tableWidgetPreview")
         self.tableWidgetPreview.setMinimumSize(QSize(200, 0))
         self.tableWidgetPreview.setStyleSheet(u"QTableWidget {\n"
@@ -506,6 +504,37 @@ class Ui_Dialog(object):
 
         self.verticalLayout_2.addWidget(self.tableWidgetPreview)
 
+        self.btnCorfirmar = QPushButton(self.frame_3)
+        self.btnCorfirmar.setObjectName(u"btnCorfirmar")
+        self.btnCorfirmar.setMinimumSize(QSize(250, 0))
+        self.btnCorfirmar.setMaximumSize(QSize(250, 16777215))
+        self.btnCorfirmar.setFont(font2)
+        self.btnCorfirmar.setToolTipDuration(-4)
+        self.btnCorfirmar.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgba(1, 167, 138, 1);\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 15px;\n"
+"    padding: 4px;\n"
+"    color: white;\n"
+"    font-size: 12px;\n"
+"    font-family: \"Questrial\";\n"
+"    text-align: center;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgba(1, 167, 138, 0.8);\n"
+"    border: 2px solid rgba(1, 167, 138, 0.5);\n"
+"    color: rgba(255, 255, 255, 0.9);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(1, 167, 138, 0.6);\n"
+"    border: 2px solid rgba(1, 167, 138, 0.4);\n"
+"}\n"
+"")
+
+        self.verticalLayout_2.addWidget(self.btnCorfirmar, 0, Qt.AlignHCenter)
+
 
         self.verticalLayout.addWidget(self.frame_3)
 
@@ -525,10 +554,10 @@ class Ui_Dialog(object):
         self.btnCerveza.setText("")
         self.btnAgua.setText("")
         self.btnZumo.setText("")
-        self.lblCategoria.setText(QCoreApplication.translate("Dialog", u"    Categoria seleccionada", None))
-        self.label_4.setText(QCoreApplication.translate("Dialog", u"-", None))
-        self.pushButton.setText("")
-        self.pushButton_2.setText("")
+        self.lbl.setText(QCoreApplication.translate("Dialog", u"    Categoria seleccionada", None))
+        self.lblCategoria.setText(QCoreApplication.translate("Dialog", u"-", None))
+        self.btnAgregar.setText("")
+        self.btnRestar.setText("")
         ___qtablewidgetitem = self.tableWidgetPreview.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Dialog", u"id", None));
         ___qtablewidgetitem1 = self.tableWidgetPreview.horizontalHeaderItem(1)
@@ -536,8 +565,7 @@ class Ui_Dialog(object):
         ___qtablewidgetitem2 = self.tableWidgetPreview.horizontalHeaderItem(2)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("Dialog", u"Cantidad", None));
         ___qtablewidgetitem3 = self.tableWidgetPreview.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("Dialog", u"Existencias", None));
-        ___qtablewidgetitem4 = self.tableWidgetPreview.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("Dialog", u"Precio", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("Dialog", u"Precio", None));
+        self.btnCorfirmar.setText(QCoreApplication.translate("Dialog", u"CONFIRMAR CAMBIOS", None))
     # retranslateUi
 
