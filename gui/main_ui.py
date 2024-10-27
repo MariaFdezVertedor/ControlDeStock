@@ -295,9 +295,28 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setSpacing(0)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.btnAlmacen = QPushButton(self.page2)
+        self.label_2 = QLabel(self.page2)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setMinimumSize(QSize(300, 70))
+        self.label_2.setMaximumSize(QSize(300, 70))
+        self.label_2.setStyleSheet(u"image: url(:/xy/small.png);")
+
+        self.horizontalLayout_3.addWidget(self.label_2)
+
+        self.horizontalSpacer_3 = QSpacerItem(10, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_3)
+
+        self.frame = QFrame(self.page2)
+        self.frame.setObjectName(u"frame")
+        self.frame.setMinimumSize(QSize(400, 70))
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_9 = QVBoxLayout(self.frame)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.btnAlmacen = QPushButton(self.frame)
         self.btnAlmacen.setObjectName(u"btnAlmacen")
-        self.btnAlmacen.setMinimumSize(QSize(800, 0))
+        self.btnAlmacen.setMinimumSize(QSize(400, 0))
         self.btnAlmacen.setFont(font2)
         self.btnAlmacen.setStyleSheet(u"QPushButton {\n"
 "    background-color:#ffffff;\n"
@@ -322,16 +341,14 @@ class Ui_MainWindow(object):
 "}\n"
 "")
 
-        self.horizontalLayout_3.addWidget(self.btnAlmacen)
+        self.verticalLayout_9.addWidget(self.btnAlmacen)
 
-        self.horizontalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_3)
-
-        self.btnModificar = QPushButton(self.page2)
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.btnModificar = QPushButton(self.frame)
         self.btnModificar.setObjectName(u"btnModificar")
-        self.btnModificar.setMinimumSize(QSize(180, 0))
-        self.btnModificar.setMaximumSize(QSize(180, 120))
+        self.btnModificar.setMinimumSize(QSize(170, 25))
+        self.btnModificar.setMaximumSize(QSize(170, 25))
         self.btnModificar.setFont(font2)
         self.btnModificar.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
@@ -356,15 +373,15 @@ class Ui_MainWindow(object):
 "}\n"
 "")
 
-        self.horizontalLayout_3.addWidget(self.btnModificar)
+        self.horizontalLayout_4.addWidget(self.btnModificar)
 
-        self.horizontalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_2)
+        self.horizontalLayout_4.addItem(self.horizontalSpacer_2)
 
-        self.btnActualizar = QPushButton(self.page2)
+        self.btnActualizar = QPushButton(self.frame)
         self.btnActualizar.setObjectName(u"btnActualizar")
-        self.btnActualizar.setMinimumSize(QSize(140, 25))
+        self.btnActualizar.setMinimumSize(QSize(170, 25))
         self.btnActualizar.setMaximumSize(QSize(140, 25))
         self.btnActualizar.setFont(font2)
         self.btnActualizar.setStyleSheet(u"QPushButton {\n"
@@ -390,7 +407,13 @@ class Ui_MainWindow(object):
 "}\n"
 "")
 
-        self.horizontalLayout_3.addWidget(self.btnActualizar)
+        self.horizontalLayout_4.addWidget(self.btnActualizar)
+
+
+        self.verticalLayout_9.addLayout(self.horizontalLayout_4)
+
+
+        self.horizontalLayout_3.addWidget(self.frame)
 
 
         self.verticalLayout_6.addLayout(self.horizontalLayout_3)
@@ -501,6 +524,7 @@ class Ui_MainWindow(object):
         self.label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.btnGastos.setText(QCoreApplication.translate("MainWindow", u"GASTOS", None))
         self.btnCompras.setText(QCoreApplication.translate("MainWindow", u"COMPRAS", None))
+        self.label_2.setText("")
         self.btnAlmacen.setText(QCoreApplication.translate("MainWindow", u"ALMACEN", None))
         self.btnModificar.setText(QCoreApplication.translate("MainWindow", u"MODICAR EXISTENCIAS", None))
         self.btnActualizar.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))

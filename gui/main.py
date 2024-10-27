@@ -18,6 +18,9 @@ class MainWindow(QMainWindow):
         self.ui.showMaximized()
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
         self.setWindowOpacity(0.95)
+
+        # Configurar el ancho inicial del menú lateral para que aparezca desplegado
+        self.ui.frameLateral.setMinimumWidth(200)
         
         # Configuración del QSizeGrip para redimensionar la ventana
         self.gripSize = 10
