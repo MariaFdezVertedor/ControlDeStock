@@ -67,10 +67,10 @@ class modificarWindow(QDialog):
         self.btnZumo.clicked.connect(lambda: self.actualizarCategoria("Zumo"))
 
         # Conectar btnAgregar con la función insertarEnTabla
-        self.btnAgregar.clicked.connect(self.insertarEnTabla)
+        self.btnAgregar.clicked.connect(self.sumarEnTabla)
 
-        # Conectar btnRestar con la función restar
-        #self.btnRestar.clicked.connect(self.restar)
+        # Conectar btnRestar con la función restarEnTabla
+        self.btnRestar.clicked.connect(self.restarEnTabla)
 
         # Conectar btnConfirmar con la función confirmar
         #self.btnConfirmar.clicked.connect(self.confirmar)
@@ -86,7 +86,7 @@ class modificarWindow(QDialog):
         if self.spinBox:
             self.spinBox.setValue(0)
 
-    def insertarEnTabla(self):
+    def sumarEnTabla(self):
         # Obtener los datos del artículo a insertar
         categoria = self.lblCategoria.text()
         cantidad = self.spinBox.value()
@@ -125,6 +125,46 @@ class modificarWindow(QDialog):
         if self.lblMensaje:
             self.lblMensaje.setText("-")
 
+    def restarEnTabla(self):
+        # Obtener datos del articulo a restar
+        categoria = self.lblCategoria.text()
+        cantidad = self.spinBox.value()
+
+        # Verificar si spinBox es 0
+        if cantidad == 0:
+            if self.lblMensaje:
+                self.lblMensaje.setText("Selecciona una cantidad diferente a 0.")
+            return
+        
+        # Verificar si esa categoria existe en la tabla
+        row_count = self.tableWidgetPreview.rowCount()
+        found = False
+
+        for row in range(row_count):
+            # Obtener el valor de la columna de categoría en la fila actual
+            item = self.tableWidgetPreview.item(row, 1)
+            if item and item.text() == categoria:
+                # Si la categoria existe, actualiza la cantidad
+                cantidadActual = int(self.tableWidgetPreview.item(row, 2).text())
+                nuevaCantidad = cantidadActual - cantidad
+
+                # Actualizar tabla
+                self.tableWidgetPreview.setItem(row, 2, QTableWidgetItem(str(nuevaCantidad)))
+                found = True
+                break
+        
+        # Si no se encuentra categoria, agregarla a la tabla en negativo
+        if not found:
+            row_position = self.tableWidgetPreview.rowCount()
+            self.tableWidgetPreview.insertRow(row_position)
+            self.tableWidgetPreview.setItem(row_position, 0, QTableWidgetItem(str(row_position + 1)))
+            self.tableWidgetPreview.setItem(row_position, 1, QTableWidgetItem(categoria))
+            self.tableWidgetPreview.setItem(row_position, 2, QTableWidgetItem(str(-cantidad)))
+            self.tableWidgetPreview.setItem(row_position, 3, QTableWidgetItem("0"))
+        
+        # Limpia mensaje despues de restar
+        if self.lblMensaje and found:
+            self.lblMensaje.setText("-")
 
 # Crear una instancia de la clase
 if __name__ == "__main__":
