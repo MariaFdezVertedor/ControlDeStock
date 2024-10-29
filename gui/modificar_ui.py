@@ -78,39 +78,13 @@ class Ui_Dialog(object):
         self.lineEvento.setObjectName(u"lineEvento")
         self.lineEvento.setMinimumSize(QSize(380, 25))
         self.lineEvento.setMaximumSize(QSize(380, 16777215))
-        self.lineEvento.setStyleSheet(u"<widget class=\"QLineEdit\" name=\"lineEvento\">\n"
-"   <property name=\"styleSheet\">\n"
-"    <string notr=\"true\">QLineEdit {\n"
-"    background-color: rgba(240, 248, 255, 0.9);  /* Fondo suave */\n"
-"    border: 2px solid rgba(1, 167, 138, 1);      /* Borde principal */\n"
-"    border-radius: 10px;                         /* Bordes redondeados */\n"
-"    padding: 5px;\n"
-"    color: rgba(34, 34, 34, 0.85);               /* Color del texto */\n"
-"    font-size: 12px;\n"
-"    font-family: \"Questrial\";\n"
-"}\n"
-"\n"
-"QLineEdit:hover {\n"
-"    background-color: rgba(1, 167, 138, 0.1);     /* Fondo en hover */\n"
-"    border: 2px solid rgba(1, 167, 138, 0.8);     /* Borde en hover */\n"
-"}\n"
-"\n"
-"QLineEdit:focus {\n"
-"    background-color: rgba(1, 167, 138, 0.2);     /* Fondo en focus */\n"
-"    border: 2px solid rgba(1, 167, 138, 1);       /* Borde en focus */\n"
-"    color: rgba(34, 34, 34, 1);\n"
-"}\n"
-"\n"
-"QLineEdit:disabled {\n"
-"    background-color: rgba(240, 248, 255, 0.6);\n"
-"    color: rgba(150,"
-                        " 150, 150, 1);\n"
-"    border: 2px solid rgba(200, 200, 200, 0.8);\n"
-"}\n"
-"</string>\n"
-"   </property>\n"
-"</widget>\n"
-"\n"
+        self.lineEvento.setStyleSheet(u"background-color: rgba(240, 248, 255, 0.9); \n"
+"border: 2px solid rgba(1, 167, 138, 1);      \n"
+"border-radius: 10px;                      \n"
+"padding: 5px;\n"
+"color: rgba(34, 34, 34, 0.85);              \n"
+"font-size: 12px;\n"
+"font-family: \"Questrial\";\n"
 "")
 
         self.horizontalLayout_5.addWidget(self.lineEvento)
@@ -455,6 +429,15 @@ class Ui_Dialog(object):
 
         self.horizontalLayout.addWidget(self.lblCategoria)
 
+        self.lblEstado = QLabel(self.frame_3)
+        self.lblEstado.setObjectName(u"lblEstado")
+        self.lblEstado.setMinimumSize(QSize(100, 30))
+        self.lblEstado.setMaximumSize(QSize(100, 30))
+        self.lblEstado.setFont(font)
+        self.lblEstado.setLayoutDirection(Qt.RightToLeft)
+
+        self.horizontalLayout.addWidget(self.lblEstado)
+
         self.spinBox = QSpinBox(self.frame_3)
         self.spinBox.setObjectName(u"spinBox")
         self.spinBox.setMinimumSize(QSize(100, 25))
@@ -617,15 +600,6 @@ class Ui_Dialog(object):
 
         self.horizontalLayout.addWidget(self.btnEliminar)
 
-        self.lblEstado = QLabel(self.frame_3)
-        self.lblEstado.setObjectName(u"lblEstado")
-        self.lblEstado.setMinimumSize(QSize(100, 30))
-        self.lblEstado.setMaximumSize(QSize(100, 30))
-        self.lblEstado.setFont(font)
-        self.lblEstado.setLayoutDirection(Qt.RightToLeft)
-
-        self.horizontalLayout.addWidget(self.lblEstado)
-
 
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
@@ -747,10 +721,10 @@ class Ui_Dialog(object):
         self.btnZumo.setText("")
         self.lbl.setText(QCoreApplication.translate("Dialog", u"    Categoria seleccionada:", None))
         self.lblCategoria.setText("")
+        self.lblEstado.setText("")
         self.btnAgregar.setText("")
         self.btnRestar.setText("")
         self.btnEliminar.setText("")
-        self.lblEstado.setText("")
         self.lblMensaje.setText("")
         ___qtablewidgetitem = self.tableWidgetPreview.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Dialog", u"id", None));

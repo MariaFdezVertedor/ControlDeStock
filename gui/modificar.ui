@@ -135,38 +135,13 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">&lt;widget class=&quot;QLineEdit&quot; name=&quot;lineEvento&quot;&gt;
-   &lt;property name=&quot;styleSheet&quot;&gt;
-    &lt;string notr=&quot;true&quot;&gt;QLineEdit {
-    background-color: rgba(240, 248, 255, 0.9);  /* Fondo suave */
-    border: 2px solid rgba(1, 167, 138, 1);      /* Borde principal */
-    border-radius: 10px;                         /* Bordes redondeados */
-    padding: 5px;
-    color: rgba(34, 34, 34, 0.85);               /* Color del texto */
-    font-size: 12px;
-    font-family: &quot;Questrial&quot;;
-}
-
-QLineEdit:hover {
-    background-color: rgba(1, 167, 138, 0.1);     /* Fondo en hover */
-    border: 2px solid rgba(1, 167, 138, 0.8);     /* Borde en hover */
-}
-
-QLineEdit:focus {
-    background-color: rgba(1, 167, 138, 0.2);     /* Fondo en focus */
-    border: 2px solid rgba(1, 167, 138, 1);       /* Borde en focus */
-    color: rgba(34, 34, 34, 1);
-}
-
-QLineEdit:disabled {
-    background-color: rgba(240, 248, 255, 0.6);
-    color: rgba(150, 150, 150, 1);
-    border: 2px solid rgba(200, 200, 200, 0.8);
-}
-&lt;/string&gt;
-   &lt;/property&gt;
-&lt;/widget&gt;
-
+         <string notr="true">background-color: rgba(240, 248, 255, 0.9); 
+border: 2px solid rgba(1, 167, 138, 1);      
+border-radius: 10px;                      
+padding: 5px;
+color: rgba(34, 34, 34, 0.85);              
+font-size: 12px;
+font-family: &quot;Questrial&quot;;
 </string>
         </property>
        </widget>
@@ -704,6 +679,34 @@ QPushButton:pressed {
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="lblEstado">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Questrial</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QSpinBox" name="spinBox">
           <property name="minimumSize">
            <size>
@@ -925,34 +928,6 @@ QPushButton:pressed {
             <width>30</width>
             <height>30</height>
            </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblEstado">
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>100</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Questrial</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="layoutDirection">
-           <enum>Qt::RightToLeft</enum>
-          </property>
-          <property name="text">
-           <string/>
           </property>
          </widget>
         </item>
