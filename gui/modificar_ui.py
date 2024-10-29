@@ -17,8 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QDialog, QFrame,
     QHBoxLayout, QHeaderView, QLabel, QPushButton,
-    QSizePolicy, QSpacerItem, QSpinBox, QSplitter,
-    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+    QSizePolicy, QSpinBox, QSplitter, QTableWidget,
+    QTableWidgetItem, QVBoxLayout, QWidget)
 import imagenes_rc
 
 class Ui_Dialog(object):
@@ -321,8 +321,8 @@ class Ui_Dialog(object):
 
         self.spinBox = QSpinBox(self.frame_3)
         self.spinBox.setObjectName(u"spinBox")
-        self.spinBox.setMinimumSize(QSize(60, 25))
-        self.spinBox.setMaximumSize(QSize(60, 16777215))
+        self.spinBox.setMinimumSize(QSize(100, 25))
+        self.spinBox.setMaximumSize(QSize(100, 16777215))
         font2 = QFont()
         font2.setFamilies([u"Questrial"])
         self.spinBox.setFont(font2)
@@ -384,7 +384,7 @@ class Ui_Dialog(object):
         self.btnAgregar.setMaximumSize(QSize(30, 30))
         self.btnAgregar.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
-"    border: 1px solid gray;\n"
+"    border: 2px solid gray;\n"
 "    border-radius: 15px;\n"
 "    padding: 4px;\n"
 "    color: white;\n"
@@ -418,7 +418,7 @@ class Ui_Dialog(object):
         self.btnRestar.setMaximumSize(QSize(30, 30))
         self.btnRestar.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgba(255, 0, 0, 1);\n"
-"    border: 1px solid gray;\n"
+"    border: 2px solid gray;\n"
 "    border-radius: 15px;\n"
 "    padding: 4px;\n"
 "    color: white;\n"
@@ -446,12 +446,62 @@ class Ui_Dialog(object):
 
         self.horizontalLayout.addWidget(self.btnRestar)
 
+        self.btnEliminar = QPushButton(self.frame_3)
+        self.btnEliminar.setObjectName(u"btnEliminar")
+        self.btnEliminar.setMinimumSize(QSize(30, 30))
+        self.btnEliminar.setMaximumSize(QSize(30, 30))
+        self.btnEliminar.setStyleSheet(u"QPushButton {\n"
+"    background-color: white;\n"
+"    border: 2px solid gray;\n"
+"    border-radius: 15px;\n"
+"    padding: 4px;\n"
+"    color: white;\n"
+"    font-size: 14px;\n"
+"    font-family: \"Segoe UI\";\n"
+"    text-align: center;\n"
+"    width: 40px;\n"
+"    height: 40px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgba(1, 167, 138, 0.8);\n"
+"    border: 2px solid rgba(1, 167, 138, 0.5);\n"
+"    color: rgba(255, 255, 255, 0.9);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(1, 167, 138, 0.6);\n"
+"    border: 2px solid rgba(1, 167, 138, 0.4);\n"
+"}\n"
+"")
+        icon2 = QIcon()
+        icon2.addFile(u"../recursos/basura.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.btnEliminar.setIcon(icon2)
+        self.btnEliminar.setIconSize(QSize(30, 30))
+
+        self.horizontalLayout.addWidget(self.btnEliminar)
+
+        self.lblEstado = QLabel(self.frame_3)
+        self.lblEstado.setObjectName(u"lblEstado")
+        self.lblEstado.setMinimumSize(QSize(100, 30))
+        self.lblEstado.setMaximumSize(QSize(100, 30))
+        self.lblEstado.setFont(font1)
+        self.lblEstado.setLayoutDirection(Qt.RightToLeft)
+
+        self.horizontalLayout.addWidget(self.lblEstado)
+
 
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
-        self.horizontalSpacer = QSpacerItem(682, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.lblMensaje = QLabel(self.frame_3)
+        self.lblMensaje.setObjectName(u"lblMensaje")
+        self.lblMensaje.setMinimumSize(QSize(660, 30))
+        self.lblMensaje.setMaximumSize(QSize(700, 30))
+        self.lblMensaje.setFont(font2)
+        self.lblMensaje.setStyleSheet(u"color: rgb(255, 0, 0);")
+        self.lblMensaje.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_2.addItem(self.horizontalSpacer)
+        self.verticalLayout_2.addWidget(self.lblMensaje)
 
         self.tableWidgetPreview = QTableWidget(self.frame_3)
         if (self.tableWidgetPreview.columnCount() < 4):
@@ -561,6 +611,9 @@ class Ui_Dialog(object):
         self.lblCategoria.setText("")
         self.btnAgregar.setText("")
         self.btnRestar.setText("")
+        self.btnEliminar.setText("")
+        self.lblEstado.setText("")
+        self.lblMensaje.setText("")
         ___qtablewidgetitem = self.tableWidgetPreview.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Dialog", u"id", None));
         ___qtablewidgetitem1 = self.tableWidgetPreview.horizontalHeaderItem(1)

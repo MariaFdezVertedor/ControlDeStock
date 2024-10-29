@@ -1,5 +1,5 @@
 from PyQt6 import uic
-from PyQt6.QtWidgets import QDialog, QApplication, QPushButton, QLabel
+from PyQt6.QtWidgets import QDialog, QApplication, QPushButton, QLabel, QSpinBox, QTableWidget, QTableWidgetItem
 
 class modificarWindow(QDialog):
     def __init__(self):
@@ -8,13 +8,13 @@ class modificarWindow(QDialog):
         uic.loadUi("gui/modificar.ui", self)
 
         # Inicializar los botones
-        self.initialize_buttons()
+        self.inicializarBotones()
 
         # Configurar las conexiones de los botones
-        self.setup_connections()
+        self.setupConexiones()
 
-    # Inicializar los botones
-    def initialize_buttons(self):
+    # Inicializar los botones y widgets
+    def inicializarBotones(self):
         self.btnRefresco = self.findChild(QPushButton, 'btnRefresco')
         self.btnAlcohol = self.findChild(QPushButton, 'btnAlcohol')
         self.btnVino = self.findChild(QPushButton, 'btnVino')
@@ -23,33 +23,110 @@ class modificarWindow(QDialog):
         self.btnAgua = self.findChild(QPushButton, 'btnAgua')
         self.btnZumo = self.findChild(QPushButton, 'btnZumo')
 
+        # Botón agregar
+        self.btnAgregar = self.findChild(QPushButton, 'btnAgregar')
+
+        # Botón restar
+        self.btnRestar = self.findChild(QPushButton, 'btnRestar')
+
+        # Botón confirmar
+        self.btnConfirmar = self.findChild(QPushButton, 'btnConfirmar')
+
+        # SpinBox para la cantidad
+        self.spinBox = self.findChild(QSpinBox, 'spinBox')
+
+        # Tabla vista previa
+        self.tableWidgetPreview = self.findChild(QTableWidget, 'tableWidgetPreview')
+
         # Encontrar etiquetas de categoría
         self.lblCategoria = self.findChild(QLabel, 'lblCategoria')
 
-        # Comprobar si lblCategoria existe
+        # Encontrar etiquetas de estado para mostrar mensajes
+        self.lblMensaje = self.findChild(QLabel, 'lblMensaje')
+
+        # Configurar valores iniciales
         if self.lblCategoria is not None:
             self.lblCategoria.setText("-")
         else:
             print("Error: lblCategoria no está definida.")
 
+        if self.lblMensaje is not None:
+            self.lblMensaje.setText("-")
+        else:
+            print("Error: lblEstado no está definida.")
+        
+
     # Conectar los botones con las funciones correspondientes
-    def setup_connections(self):
-        self.btnRefresco.clicked.connect(lambda: self.actualizar_categoria("Refresco"))
-        self.btnAlcohol.clicked.connect(lambda: self.actualizar_categoria("Alcohol"))
-        self.btnVino.clicked.connect(lambda: self.actualizar_categoria("Vino"))
-        self.btnCava.clicked.connect(lambda: self.actualizar_categoria("Cava"))
-        self.btnCerveza.clicked.connect(lambda: self.actualizar_categoria("Cerveza"))
-        self.btnAgua.clicked.connect(lambda: self.actualizar_categoria("Agua"))
-        self.btnZumo.clicked.connect(lambda: self.actualizar_categoria("Zumo"))
+    def setupConexiones(self):
+        self.btnRefresco.clicked.connect(lambda: self.actualizarCategoria("Refresco"))
+        self.btnAlcohol.clicked.connect(lambda: self.actualizarCategoria("Alcohol"))
+        self.btnVino.clicked.connect(lambda: self.actualizarCategoria("Vino"))
+        self.btnCava.clicked.connect(lambda: self.actualizarCategoria("Cava"))
+        self.btnCerveza.clicked.connect(lambda: self.actualizarCategoria("Cerveza"))
+        self.btnAgua.clicked.connect(lambda: self.actualizarCategoria("Agua"))
+        self.btnZumo.clicked.connect(lambda: self.actualizarCategoria("Zumo"))
+
+        # Conectar btnAgregar con la función insertarEnTabla
+        self.btnAgregar.clicked.connect(self.insertarEnTabla)
+
+        # Conectar btnRestar con la función restar
+        #self.btnRestar.clicked.connect(self.restar)
+
+        # Conectar btnConfirmar con la función confirmar
+        #self.btnConfirmar.clicked.connect(self.confirmar)
 
     # Función para actualizar la etiqueta con la categoría seleccionada
-    def actualizar_categoria(self, categoria):
+    def actualizarCategoria(self, categoria):
         if self.lblCategoria:
             self.lblCategoria.setText(f"{categoria}")
         else:
             print("Error: lblCategoria no está definida.")
+        
+        # Reiniciar el spinBox 
+        if self.spinBox:
+            self.spinBox.setValue(0)
+
+    def insertarEnTabla(self):
+        # Obtener los datos del artículo a insertar
+        categoria = self.lblCategoria.text()
+        cantidad = self.spinBox.value()
+
+        # Verificar si el spinBox es 0
+        if cantidad == 0:
+            if self.lblMensaje:
+                self.lblMensaje.setText("Selecciona una cantidad diferente a 0.")  # Mensaje de advertencia en lblMensaje
+            return  # Termina la función sin agregar la fila
+
+        # Verificar si la categoría ya existe en la tabla
+        row_count = self.tableWidgetPreview.rowCount()
+        found = False
+
+        for row in range(row_count):
+            # Obtener el valor de la columna de categoría en la fila actual
+            item = self.tableWidgetPreview.item(row, 1)
+            if item and item.text() == categoria:
+                # Si la categoría ya existe, actualizar la cantidad
+                cantidad_actual = int(self.tableWidgetPreview.item(row, 2).text())
+                nueva_cantidad = cantidad_actual + cantidad
+                self.tableWidgetPreview.setItem(row, 2, QTableWidgetItem(str(nueva_cantidad)))
+                found = True
+                break
+
+        # Si la categoría no se encontró, insertar una nueva fila
+        if not found:
+            row_position = self.tableWidgetPreview.rowCount()
+            self.tableWidgetPreview.insertRow(row_position)
+            self.tableWidgetPreview.setItem(row_position, 0, QTableWidgetItem(str(row_position + 1)))
+            self.tableWidgetPreview.setItem(row_position, 1, QTableWidgetItem(categoria))
+            self.tableWidgetPreview.setItem(row_position, 2, QTableWidgetItem(str(cantidad)))
+            self.tableWidgetPreview.setItem(row_position, 3, QTableWidgetItem("0"))
+
+        # Limpiar mensaje de estado después de insertar o actualizar correctamente
+        if self.lblMensaje:
+            self.lblMensaje.setText("-")
 
 
+# Crear una instancia de la clase
 if __name__ == "__main__":
     import sys
     app = QApplication(sys.argv)

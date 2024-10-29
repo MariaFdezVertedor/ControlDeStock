@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="xy">
+    <file>basura.png</file>
+    <file>papelera.png</file>
     <file>agregar.png</file>
     <file>boton-menos.png</file>
     <file>minim.png</file>
