@@ -17,9 +17,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QDateEdit, QDialog,
     QFrame, QHBoxLayout, QHeaderView, QLabel,
-    QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
-    QSpinBox, QSplitter, QTableWidget, QTableWidgetItem,
-    QVBoxLayout, QWidget)
+    QLineEdit, QPushButton, QSizePolicy, QSpinBox,
+    QSplitter, QTableWidget, QTableWidgetItem, QVBoxLayout,
+    QWidget)
 import imagenes_rc
 
 class Ui_Dialog(object):
@@ -74,20 +74,46 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_5.addWidget(self.label_2)
 
-        self.lineEdit = QLineEdit(self.frame_4)
-        self.lineEdit.setObjectName(u"lineEdit")
-        self.lineEdit.setMinimumSize(QSize(420, 25))
-        self.lineEdit.setMaximumSize(QSize(420, 16777215))
+        self.lineEvento = QLineEdit(self.frame_4)
+        self.lineEvento.setObjectName(u"lineEvento")
+        self.lineEvento.setMinimumSize(QSize(380, 25))
+        self.lineEvento.setMaximumSize(QSize(380, 16777215))
+        self.lineEvento.setStyleSheet(u"<widget class=\"QLineEdit\" name=\"lineEvento\">\n"
+"   <property name=\"styleSheet\">\n"
+"    <string notr=\"true\">QLineEdit {\n"
+"    background-color: rgba(240, 248, 255, 0.9);  /* Fondo suave */\n"
+"    border: 2px solid rgba(1, 167, 138, 1);      /* Borde principal */\n"
+"    border-radius: 10px;                         /* Bordes redondeados */\n"
+"    padding: 5px;\n"
+"    color: rgba(34, 34, 34, 0.85);               /* Color del texto */\n"
+"    font-size: 12px;\n"
+"    font-family: \"Questrial\";\n"
+"}\n"
+"\n"
+"QLineEdit:hover {\n"
+"    background-color: rgba(1, 167, 138, 0.1);     /* Fondo en hover */\n"
+"    border: 2px solid rgba(1, 167, 138, 0.8);     /* Borde en hover */\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"    background-color: rgba(1, 167, 138, 0.2);     /* Fondo en focus */\n"
+"    border: 2px solid rgba(1, 167, 138, 1);       /* Borde en focus */\n"
+"    color: rgba(34, 34, 34, 1);\n"
+"}\n"
+"\n"
+"QLineEdit:disabled {\n"
+"    background-color: rgba(240, 248, 255, 0.6);\n"
+"    color: rgba(150,"
+                        " 150, 150, 1);\n"
+"    border: 2px solid rgba(200, 200, 200, 0.8);\n"
+"}\n"
+"</string>\n"
+"   </property>\n"
+"</widget>\n"
+"\n"
+"")
 
-        self.horizontalLayout_5.addWidget(self.lineEdit)
-
-        self.horizontalSpacer = QSpacerItem(10, 15, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.horizontalLayout_5.addItem(self.horizontalSpacer)
-
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.horizontalLayout_5.addItem(self.horizontalSpacer_3)
+        self.horizontalLayout_5.addWidget(self.lineEvento)
 
         self.label_3 = QLabel(self.frame_4)
         self.label_3.setObjectName(u"label_3")
@@ -99,14 +125,70 @@ class Ui_Dialog(object):
 
         self.dateEdit = QDateEdit(self.frame_4)
         self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setMinimumSize(QSize(100, 0))
-        self.dateEdit.setMaximumSize(QSize(100, 25))
+        self.dateEdit.setMinimumSize(QSize(140, 25))
+        self.dateEdit.setMaximumSize(QSize(140, 25))
+        self.dateEdit.setStyleSheet(u"QDateEdit {\n"
+"    background-color: rgba(240, 248, 255, 0.9);  /* Fondo suave */\n"
+"    border: 2px solid rgba(1, 167, 138, 1);      /* Borde principal */\n"
+"    border-radius: 10px;                         /* Bordes redondeados */\n"
+"    padding: 5px;\n"
+"    color: rgba(34, 34, 34, 0.85);               /* Color del texto */\n"
+"    font-size: 12px;\n"
+"    font-family: \"Questrial\";\n"
+"}\n"
+"\n"
+"QDateEdit::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 20px;\n"
+"    border-left: 1px solid rgba(1, 167, 138, 1);  /* Lado izquierdo del bot\u00f3n */\n"
+"    background-color: rgba(1, 167, 138, 1);\n"
+"    border-top-right-radius: 10px;\n"
+"    border-bottom-right-radius: 10px;\n"
+"}\n"
+"\n"
+"QDateEdit::up-button, QDateEdit::down-button {\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"    border: none;\n"
+"    background-color: rgba(1, 167, 138, 1);      /* Fondo del bot\u00f3n */\n"
+"    border-radius: 8px;                           /* Forma circula"
+                        "r */\n"
+"    padding: 0px;\n"
+"}\n"
+"\n"
+"QDateEdit::up-arrow {\n"
+"    image: url(:/icons/up_arrow.svg);            /* Reemplaza con una flecha SVG o PNG hacia arriba */\n"
+"    width: 10px;\n"
+"    height: 10px;\n"
+"}\n"
+"\n"
+"QDateEdit::down-arrow {\n"
+"    image: url(:/icons/down_arrow.svg);          /* Reemplaza con una flecha SVG o PNG hacia abajo */\n"
+"    width: 10px;\n"
+"    height: 10px;\n"
+"}\n"
+"\n"
+"QDateEdit:hover {\n"
+"    background-color: rgba(1, 167, 138, 0.1);     /* Fondo en hover */\n"
+"    border: 2px solid rgba(1, 167, 138, 0.8);     /* Borde en hover */\n"
+"}\n"
+"\n"
+"QDateEdit:focus {\n"
+"    background-color: rgba(1, 167, 138, 0.2);     /* Fondo en focus */\n"
+"    border: 2px solid rgba(1, 167, 138, 1);       /* Borde en focus */\n"
+"    color: rgba(34, 34, 34, 1);\n"
+"}\n"
+"\n"
+"QDateEdit:disabled {\n"
+"    background-color: rgba(240, 248, 255, 0.6);\n"
+"    color: rgba(150, 150, 150, 1);\n"
+"    border: 2px solid rgba(200, 200, 200, 0.8);\n"
+"}\n"
+"\n"
+"")
 
         self.horizontalLayout_5.addWidget(self.dateEdit)
-
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.horizontalLayout_5.addItem(self.horizontalSpacer_2)
 
 
         self.verticalLayout.addWidget(self.frame_4)

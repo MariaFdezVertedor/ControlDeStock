@@ -121,46 +121,55 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="lineEvento">
         <property name="minimumSize">
          <size>
-          <width>420</width>
+          <width>380</width>
           <height>25</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>420</width>
+          <width>380</width>
           <height>16777215</height>
          </size>
         </property>
+        <property name="styleSheet">
+         <string notr="true">&lt;widget class=&quot;QLineEdit&quot; name=&quot;lineEvento&quot;&gt;
+   &lt;property name=&quot;styleSheet&quot;&gt;
+    &lt;string notr=&quot;true&quot;&gt;QLineEdit {
+    background-color: rgba(240, 248, 255, 0.9);  /* Fondo suave */
+    border: 2px solid rgba(1, 167, 138, 1);      /* Borde principal */
+    border-radius: 10px;                         /* Bordes redondeados */
+    padding: 5px;
+    color: rgba(34, 34, 34, 0.85);               /* Color del texto */
+    font-size: 12px;
+    font-family: &quot;Questrial&quot;;
+}
+
+QLineEdit:hover {
+    background-color: rgba(1, 167, 138, 0.1);     /* Fondo en hover */
+    border: 2px solid rgba(1, 167, 138, 0.8);     /* Borde en hover */
+}
+
+QLineEdit:focus {
+    background-color: rgba(1, 167, 138, 0.2);     /* Fondo en focus */
+    border: 2px solid rgba(1, 167, 138, 1);       /* Borde en focus */
+    color: rgba(34, 34, 34, 1);
+}
+
+QLineEdit:disabled {
+    background-color: rgba(240, 248, 255, 0.6);
+    color: rgba(150, 150, 150, 1);
+    border: 2px solid rgba(200, 200, 200, 0.8);
+}
+&lt;/string&gt;
+   &lt;/property&gt;
+&lt;/widget&gt;
+
+</string>
+        </property>
        </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>10</width>
-          <height>15</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
       </item>
       <item>
        <widget class="QLabel" name="label_3">
@@ -191,30 +200,78 @@
        <widget class="QDateEdit" name="dateEdit">
         <property name="minimumSize">
          <size>
-          <width>100</width>
-          <height>0</height>
+          <width>140</width>
+          <height>25</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>100</width>
+          <width>140</width>
           <height>25</height>
          </size>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QDateEdit {
+    background-color: rgba(240, 248, 255, 0.9);  /* Fondo suave */
+    border: 2px solid rgba(1, 167, 138, 1);      /* Borde principal */
+    border-radius: 10px;                         /* Bordes redondeados */
+    padding: 5px;
+    color: rgba(34, 34, 34, 0.85);               /* Color del texto */
+    font-size: 12px;
+    font-family: &quot;Questrial&quot;;
+}
+
+QDateEdit::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border-left: 1px solid rgba(1, 167, 138, 1);  /* Lado izquierdo del botón */
+    background-color: rgba(1, 167, 138, 1);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+QDateEdit::up-button, QDateEdit::down-button {
+    width: 16px;
+    height: 16px;
+    border: none;
+    background-color: rgba(1, 167, 138, 1);      /* Fondo del botón */
+    border-radius: 8px;                           /* Forma circular */
+    padding: 0px;
+}
+
+QDateEdit::up-arrow {
+    image: url(:/icons/up_arrow.svg);            /* Reemplaza con una flecha SVG o PNG hacia arriba */
+    width: 10px;
+    height: 10px;
+}
+
+QDateEdit::down-arrow {
+    image: url(:/icons/down_arrow.svg);          /* Reemplaza con una flecha SVG o PNG hacia abajo */
+    width: 10px;
+    height: 10px;
+}
+
+QDateEdit:hover {
+    background-color: rgba(1, 167, 138, 0.1);     /* Fondo en hover */
+    border: 2px solid rgba(1, 167, 138, 0.8);     /* Borde en hover */
+}
+
+QDateEdit:focus {
+    background-color: rgba(1, 167, 138, 0.2);     /* Fondo en focus */
+    border: 2px solid rgba(1, 167, 138, 1);       /* Borde en focus */
+    color: rgba(34, 34, 34, 1);
+}
+
+QDateEdit:disabled {
+    background-color: rgba(240, 248, 255, 0.6);
+    color: rgba(150, 150, 150, 1);
+    border: 2px solid rgba(200, 200, 200, 0.8);
+}
+
+</string>
+        </property>
        </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
       </item>
      </layout>
     </widget>
