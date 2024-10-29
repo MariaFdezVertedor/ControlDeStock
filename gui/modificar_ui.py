@@ -15,11 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QDateEdit, QDialog,
-    QFrame, QHBoxLayout, QHeaderView, QLabel,
-    QLineEdit, QPushButton, QSizePolicy, QSpinBox,
-    QSplitter, QTableWidget, QTableWidgetItem, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QComboBox, QDateEdit,
+    QDialog, QFrame, QHBoxLayout, QHeaderView,
+    QLabel, QLineEdit, QPushButton, QSizePolicy,
+    QSpacerItem, QSpinBox, QSplitter, QTableWidget,
+    QTableWidgetItem, QVBoxLayout, QWidget)
 import imagenes_rc
 
 class Ui_Dialog(object):
@@ -76,8 +76,8 @@ class Ui_Dialog(object):
 
         self.lineEvento = QLineEdit(self.frame_4)
         self.lineEvento.setObjectName(u"lineEvento")
-        self.lineEvento.setMinimumSize(QSize(380, 25))
-        self.lineEvento.setMaximumSize(QSize(380, 16777215))
+        self.lineEvento.setMinimumSize(QSize(300, 25))
+        self.lineEvento.setMaximumSize(QSize(300, 16777215))
         self.lineEvento.setStyleSheet(u"background-color: rgba(240, 248, 255, 0.9); \n"
 "border: 2px solid rgba(1, 167, 138, 1);      \n"
 "border-radius: 10px;                      \n"
@@ -99,8 +99,8 @@ class Ui_Dialog(object):
 
         self.dateEdit = QDateEdit(self.frame_4)
         self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setMinimumSize(QSize(140, 25))
-        self.dateEdit.setMaximumSize(QSize(140, 25))
+        self.dateEdit.setMinimumSize(QSize(120, 25))
+        self.dateEdit.setMaximumSize(QSize(120, 25))
         self.dateEdit.setStyleSheet(u"QDateEdit {\n"
 "    background-color: rgba(240, 248, 255, 0.9);  /* Fondo suave */\n"
 "    border: 2px solid rgba(1, 167, 138, 1);      /* Borde principal */\n"
@@ -164,6 +164,66 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_5.addWidget(self.dateEdit)
 
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer)
+
+        self.comboBox = QComboBox(self.frame_4)
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.setObjectName(u"comboBox")
+        self.comboBox.setMinimumSize(QSize(100, 25))
+        self.comboBox.setMaximumSize(QSize(100, 25))
+        font1 = QFont()
+        font1.setFamilies([u"Questrial"])
+        self.comboBox.setFont(font1)
+        self.comboBox.setStyleSheet(u"QComboBox {\n"
+"    background-color: rgba(240, 248, 255, 0.9);  /* Fondo suave */\n"
+"    border: 2px solid rgba(1, 167, 138, 1);      /* Borde principal */\n"
+"    border-radius: 10px;                         /* Bordes redondeados */\n"
+"    padding: 5px;\n"
+"    color: rgba(34, 34, 34, 0.85);               /* Color del texto */\n"
+"    font-size: 12px;\n"
+"    font-family: \"Questrial\";                    /* Fuente */\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 20px;\n"
+"    border-left: 1px solid rgba(1, 167, 138, 1);  /* Lado izquierdo del bot\u00f3n */\n"
+"    background-color: rgba(1, 167, 138, 1);      /* Fondo del bot\u00f3n */\n"
+"    border-top-right-radius: 10px;               /* Bordes redondeados del bot\u00f3n */\n"
+"    border-bottom-right-radius: 10px;\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow {\n"
+"    image: url(:/icons/down_arrow.svg);          /* Reemplaza con una flecha SVG o PNG hacia abajo */\n"
+"    width:"
+                        " 10px;\n"
+"    height: 10px;\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"    background-color: rgba(1, 167, 138, 0.1);     /* Fondo en hover */\n"
+"    border: 2px solid rgba(1, 167, 138, 0.8);     /* Borde en hover */\n"
+"}\n"
+"\n"
+"QComboBox:focus {\n"
+"    background-color: rgba(1, 167, 138, 0.2);     /* Fondo en focus */\n"
+"    border: 2px solid rgba(1, 167, 138, 1);       /* Borde en focus */\n"
+"    color: rgba(34, 34, 34, 1);\n"
+"}\n"
+"\n"
+"QComboBox:disabled {\n"
+"    background-color: rgba(240, 248, 255, 0.6);\n"
+"    color: rgba(150, 150, 150, 1);\n"
+"    border: 2px solid rgba(200, 200, 200, 0.8);\n"
+"}\n"
+"")
+
+        self.horizontalLayout_5.addWidget(self.comboBox)
+
 
         self.verticalLayout.addWidget(self.frame_4)
 
@@ -186,9 +246,9 @@ class Ui_Dialog(object):
         self.btnRefresco.setSizePolicy(sizePolicy)
         self.btnRefresco.setMinimumSize(QSize(60, 60))
         self.btnRefresco.setMaximumSize(QSize(60, 60))
-        font1 = QFont()
-        font1.setFamilies([u"Segoe UI"])
-        self.btnRefresco.setFont(font1)
+        font2 = QFont()
+        font2.setFamilies([u"Segoe UI"])
+        self.btnRefresco.setFont(font2)
         self.btnRefresco.setLayoutDirection(Qt.LeftToRight)
         self.btnRefresco.setStyleSheet(u"QPushButton {\n"
 "	image: url(:/xy/refresco.png);\n"
@@ -220,7 +280,7 @@ class Ui_Dialog(object):
         self.btnAlcohol.setObjectName(u"btnAlcohol")
         self.btnAlcohol.setMinimumSize(QSize(60, 60))
         self.btnAlcohol.setMaximumSize(QSize(60, 60))
-        self.btnAlcohol.setFont(font1)
+        self.btnAlcohol.setFont(font2)
         self.btnAlcohol.setStyleSheet(u"QPushButton {\n"
 "	image: url(:/xy/alcohol.png);\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
@@ -281,7 +341,7 @@ class Ui_Dialog(object):
         self.btnCava.setObjectName(u"btnCava")
         self.btnCava.setMinimumSize(QSize(60, 60))
         self.btnCava.setMaximumSize(QSize(60, 60))
-        self.btnCava.setFont(font1)
+        self.btnCava.setFont(font2)
         self.btnCava.setStyleSheet(u"QPushButton {\n"
 "	image: url(:/xy/champagne.png);\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
@@ -312,7 +372,7 @@ class Ui_Dialog(object):
         self.btnCerveza.setObjectName(u"btnCerveza")
         self.btnCerveza.setMinimumSize(QSize(60, 60))
         self.btnCerveza.setMaximumSize(QSize(60, 60))
-        self.btnCerveza.setFont(font1)
+        self.btnCerveza.setFont(font2)
         self.btnCerveza.setStyleSheet(u"QPushButton {\n"
 "	image: url(:/xy/cerveza.png);\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
@@ -343,7 +403,7 @@ class Ui_Dialog(object):
         self.btnAgua.setObjectName(u"btnAgua")
         self.btnAgua.setMinimumSize(QSize(60, 60))
         self.btnAgua.setMaximumSize(QSize(60, 60))
-        self.btnAgua.setFont(font1)
+        self.btnAgua.setFont(font2)
         self.btnAgua.setStyleSheet(u"QPushButton {\n"
 "	image: url(:/xy/agua.png);\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
@@ -442,9 +502,7 @@ class Ui_Dialog(object):
         self.spinBox.setObjectName(u"spinBox")
         self.spinBox.setMinimumSize(QSize(100, 25))
         self.spinBox.setMaximumSize(QSize(100, 16777215))
-        font2 = QFont()
-        font2.setFamilies([u"Questrial"])
-        self.spinBox.setFont(font2)
+        self.spinBox.setFont(font1)
         self.spinBox.setStyleSheet(u"QSpinBox {\n"
 "    background-color: #F0F0F0;\n"
 "    border: 1px solid #8E8E8E;\n"
@@ -607,7 +665,7 @@ class Ui_Dialog(object):
         self.lblMensaje.setObjectName(u"lblMensaje")
         self.lblMensaje.setMinimumSize(QSize(660, 30))
         self.lblMensaje.setMaximumSize(QSize(700, 30))
-        self.lblMensaje.setFont(font2)
+        self.lblMensaje.setFont(font1)
         self.lblMensaje.setStyleSheet(u"color: rgb(255, 0, 0);")
         self.lblMensaje.setAlignment(Qt.AlignCenter)
 
@@ -671,7 +729,7 @@ class Ui_Dialog(object):
         self.btnCorfirmar.setObjectName(u"btnCorfirmar")
         self.btnCorfirmar.setMinimumSize(QSize(250, 0))
         self.btnCorfirmar.setMaximumSize(QSize(250, 16777215))
-        self.btnCorfirmar.setFont(font2)
+        self.btnCorfirmar.setFont(font1)
         self.btnCorfirmar.setToolTipDuration(-4)
         self.btnCorfirmar.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
@@ -712,6 +770,9 @@ class Ui_Dialog(object):
         self.label.setText("")
         self.label_2.setText(QCoreApplication.translate("Dialog", u"Evento", None))
         self.label_3.setText(QCoreApplication.translate("Dialog", u"Fecha", None))
+        self.comboBox.setItemText(0, QCoreApplication.translate("Dialog", u"Gastos", None))
+        self.comboBox.setItemText(1, QCoreApplication.translate("Dialog", u"Compras", None))
+
         self.btnRefresco.setText("")
         self.btnAlcohol.setText("")
         self.btnVino.setText("")

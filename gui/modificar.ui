@@ -124,13 +124,13 @@
        <widget class="QLineEdit" name="lineEvento">
         <property name="minimumSize">
          <size>
-          <width>380</width>
+          <width>300</width>
           <height>25</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>380</width>
+          <width>300</width>
           <height>16777215</height>
          </size>
         </property>
@@ -175,13 +175,13 @@ font-family: &quot;Questrial&quot;;
        <widget class="QDateEdit" name="dateEdit">
         <property name="minimumSize">
          <size>
-          <width>140</width>
+          <width>120</width>
           <height>25</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>140</width>
+          <width>120</width>
           <height>25</height>
          </size>
         </property>
@@ -246,6 +246,96 @@ QDateEdit:disabled {
 
 </string>
         </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Questrial</family>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    background-color: rgba(240, 248, 255, 0.9);  /* Fondo suave */
+    border: 2px solid rgba(1, 167, 138, 1);      /* Borde principal */
+    border-radius: 10px;                         /* Bordes redondeados */
+    padding: 5px;
+    color: rgba(34, 34, 34, 0.85);               /* Color del texto */
+    font-size: 12px;
+    font-family: &quot;Questrial&quot;;                    /* Fuente */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border-left: 1px solid rgba(1, 167, 138, 1);  /* Lado izquierdo del botón */
+    background-color: rgba(1, 167, 138, 1);      /* Fondo del botón */
+    border-top-right-radius: 10px;               /* Bordes redondeados del botón */
+    border-bottom-right-radius: 10px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/icons/down_arrow.svg);          /* Reemplaza con una flecha SVG o PNG hacia abajo */
+    width: 10px;
+    height: 10px;
+}
+
+QComboBox:hover {
+    background-color: rgba(1, 167, 138, 0.1);     /* Fondo en hover */
+    border: 2px solid rgba(1, 167, 138, 0.8);     /* Borde en hover */
+}
+
+QComboBox:focus {
+    background-color: rgba(1, 167, 138, 0.2);     /* Fondo en focus */
+    border: 2px solid rgba(1, 167, 138, 1);       /* Borde en focus */
+    color: rgba(34, 34, 34, 1);
+}
+
+QComboBox:disabled {
+    background-color: rgba(240, 248, 255, 0.6);
+    color: rgba(150, 150, 150, 1);
+    border: 2px solid rgba(200, 200, 200, 0.8);
+}
+</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Gastos</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Compras</string>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>
