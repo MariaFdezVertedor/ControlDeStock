@@ -15,17 +15,18 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QDialog, QFrame,
-    QHBoxLayout, QHeaderView, QLabel, QPushButton,
-    QSizePolicy, QSpinBox, QSplitter, QTableWidget,
-    QTableWidgetItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QDateEdit, QDialog,
+    QFrame, QHBoxLayout, QHeaderView, QLabel,
+    QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
+    QSpinBox, QSplitter, QTableWidget, QTableWidgetItem,
+    QVBoxLayout, QWidget)
 import imagenes_rc
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(723, 504)
+        Dialog.resize(723, 497)
         Dialog.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -54,6 +55,62 @@ class Ui_Dialog(object):
 
         self.verticalLayout.addWidget(self.splitter)
 
+        self.frame_4 = QFrame(Dialog)
+        self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setMinimumSize(QSize(0, 40))
+        self.frame_4.setMaximumSize(QSize(16777215, 30))
+        self.frame_4.setFrameShape(QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_5 = QHBoxLayout(self.frame_4)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.label_2 = QLabel(self.frame_4)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setMinimumSize(QSize(60, 25))
+        self.label_2.setMaximumSize(QSize(60, 25))
+        font = QFont()
+        font.setFamilies([u"Questrial"])
+        font.setPointSize(12)
+        self.label_2.setFont(font)
+
+        self.horizontalLayout_5.addWidget(self.label_2)
+
+        self.lineEdit = QLineEdit(self.frame_4)
+        self.lineEdit.setObjectName(u"lineEdit")
+        self.lineEdit.setMinimumSize(QSize(420, 25))
+        self.lineEdit.setMaximumSize(QSize(420, 16777215))
+
+        self.horizontalLayout_5.addWidget(self.lineEdit)
+
+        self.horizontalSpacer = QSpacerItem(10, 15, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_3)
+
+        self.label_3 = QLabel(self.frame_4)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setMinimumSize(QSize(60, 25))
+        self.label_3.setMaximumSize(QSize(60, 25))
+        self.label_3.setFont(font)
+
+        self.horizontalLayout_5.addWidget(self.label_3)
+
+        self.dateEdit = QDateEdit(self.frame_4)
+        self.dateEdit.setObjectName(u"dateEdit")
+        self.dateEdit.setMinimumSize(QSize(100, 0))
+        self.dateEdit.setMaximumSize(QSize(100, 25))
+
+        self.horizontalLayout_5.addWidget(self.dateEdit)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_2)
+
+
+        self.verticalLayout.addWidget(self.frame_4)
+
         self.frame_2 = QFrame(Dialog)
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setMinimumSize(QSize(0, 100))
@@ -73,9 +130,9 @@ class Ui_Dialog(object):
         self.btnRefresco.setSizePolicy(sizePolicy)
         self.btnRefresco.setMinimumSize(QSize(60, 60))
         self.btnRefresco.setMaximumSize(QSize(60, 60))
-        font = QFont()
-        font.setFamilies([u"Segoe UI"])
-        self.btnRefresco.setFont(font)
+        font1 = QFont()
+        font1.setFamilies([u"Segoe UI"])
+        self.btnRefresco.setFont(font1)
         self.btnRefresco.setLayoutDirection(Qt.LeftToRight)
         self.btnRefresco.setStyleSheet(u"QPushButton {\n"
 "	image: url(:/xy/refresco.png);\n"
@@ -107,7 +164,7 @@ class Ui_Dialog(object):
         self.btnAlcohol.setObjectName(u"btnAlcohol")
         self.btnAlcohol.setMinimumSize(QSize(60, 60))
         self.btnAlcohol.setMaximumSize(QSize(60, 60))
-        self.btnAlcohol.setFont(font)
+        self.btnAlcohol.setFont(font1)
         self.btnAlcohol.setStyleSheet(u"QPushButton {\n"
 "	image: url(:/xy/alcohol.png);\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
@@ -168,7 +225,7 @@ class Ui_Dialog(object):
         self.btnCava.setObjectName(u"btnCava")
         self.btnCava.setMinimumSize(QSize(60, 60))
         self.btnCava.setMaximumSize(QSize(60, 60))
-        self.btnCava.setFont(font)
+        self.btnCava.setFont(font1)
         self.btnCava.setStyleSheet(u"QPushButton {\n"
 "	image: url(:/xy/champagne.png);\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
@@ -199,7 +256,7 @@ class Ui_Dialog(object):
         self.btnCerveza.setObjectName(u"btnCerveza")
         self.btnCerveza.setMinimumSize(QSize(60, 60))
         self.btnCerveza.setMaximumSize(QSize(60, 60))
-        self.btnCerveza.setFont(font)
+        self.btnCerveza.setFont(font1)
         self.btnCerveza.setStyleSheet(u"QPushButton {\n"
 "	image: url(:/xy/cerveza.png);\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
@@ -230,7 +287,7 @@ class Ui_Dialog(object):
         self.btnAgua.setObjectName(u"btnAgua")
         self.btnAgua.setMinimumSize(QSize(60, 60))
         self.btnAgua.setMaximumSize(QSize(60, 60))
-        self.btnAgua.setFont(font)
+        self.btnAgua.setFont(font1)
         self.btnAgua.setStyleSheet(u"QPushButton {\n"
 "	image: url(:/xy/agua.png);\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
@@ -305,16 +362,13 @@ class Ui_Dialog(object):
         self.lbl.setObjectName(u"lbl")
         self.lbl.setMinimumSize(QSize(200, 0))
         self.lbl.setMaximumSize(QSize(200, 16777215))
-        font1 = QFont()
-        font1.setFamilies([u"Questrial"])
-        font1.setPointSize(12)
-        self.lbl.setFont(font1)
+        self.lbl.setFont(font)
 
         self.horizontalLayout.addWidget(self.lbl)
 
         self.lblCategoria = QLabel(self.frame_3)
         self.lblCategoria.setObjectName(u"lblCategoria")
-        self.lblCategoria.setFont(font1)
+        self.lblCategoria.setFont(font)
         self.lblCategoria.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout.addWidget(self.lblCategoria)
@@ -485,7 +539,7 @@ class Ui_Dialog(object):
         self.lblEstado.setObjectName(u"lblEstado")
         self.lblEstado.setMinimumSize(QSize(100, 30))
         self.lblEstado.setMaximumSize(QSize(100, 30))
-        self.lblEstado.setFont(font1)
+        self.lblEstado.setFont(font)
         self.lblEstado.setLayoutDirection(Qt.RightToLeft)
 
         self.horizontalLayout.addWidget(self.lblEstado)
@@ -600,6 +654,8 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.label.setText("")
+        self.label_2.setText(QCoreApplication.translate("Dialog", u"Evento", None))
+        self.label_3.setText(QCoreApplication.translate("Dialog", u"Fecha", None))
         self.btnRefresco.setText("")
         self.btnAlcohol.setText("")
         self.btnVino.setText("")

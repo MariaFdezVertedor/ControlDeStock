@@ -29,6 +29,9 @@ class modificarWindow(QDialog):
         # Botón restar
         self.btnRestar = self.findChild(QPushButton, 'btnRestar')
 
+        # Botón eliminar
+        self.btnEliminar = self.findChild(QPushButton, 'btnEliminar')
+
         # Botón confirmar
         self.btnConfirmar = self.findChild(QPushButton, 'btnConfirmar')
 
@@ -71,6 +74,9 @@ class modificarWindow(QDialog):
 
         # Conectar btnRestar con la función restarEnTabla
         self.btnRestar.clicked.connect(self.restarEnTabla)
+
+        # Conectar btnEliminar con la función eliminarEnTabla
+        self.btnEliminar.clicked.connect(self.eliminarEnTabla)
 
         # Conectar btnConfirmar con la función confirmar
         #self.btnConfirmar.clicked.connect(self.confirmar)
@@ -165,6 +171,19 @@ class modificarWindow(QDialog):
         # Limpia mensaje despues de restar
         if self.lblMensaje and found:
             self.lblMensaje.setText("-")
+
+    def eliminarEnTabla(self):
+        # Obtener datos de la fila a eliminar
+        filaSeleccionada = self.tableWidgetPreview.currentRow()
+
+        # Verificar si la fila esta seleccionada
+        if filaSeleccionada != -1:
+            self.tableWidgetPreview.removeRow(filaSeleccionada)
+            if self.lblMensaje:
+                self.lblMensaje.setText("Fila eliminada correctamente")
+            else:
+                if self.lblMensaje:
+                    self.lblMensaje.setText("Seleccione la fila que desea eliminar")
 
 # Crear una instancia de la clase
 if __name__ == "__main__":
