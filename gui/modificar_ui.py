@@ -672,8 +672,8 @@ class Ui_Dialog(object):
         self.verticalLayout_2.addWidget(self.lblMensaje)
 
         self.tableWidgetPreview = QTableWidget(self.frame_3)
-        if (self.tableWidgetPreview.columnCount() < 4):
-            self.tableWidgetPreview.setColumnCount(4)
+        if (self.tableWidgetPreview.columnCount() < 6):
+            self.tableWidgetPreview.setColumnCount(6)
         __qtablewidgetitem = QTableWidgetItem()
         self.tableWidgetPreview.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
@@ -682,6 +682,10 @@ class Ui_Dialog(object):
         self.tableWidgetPreview.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         __qtablewidgetitem3 = QTableWidgetItem()
         self.tableWidgetPreview.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.tableWidgetPreview.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.tableWidgetPreview.setHorizontalHeaderItem(5, __qtablewidgetitem5)
         self.tableWidgetPreview.setObjectName(u"tableWidgetPreview")
         self.tableWidgetPreview.setMinimumSize(QSize(200, 0))
         self.tableWidgetPreview.setStyleSheet(u"QTableWidget {\n"
@@ -795,6 +799,10 @@ class Ui_Dialog(object):
         ___qtablewidgetitem2.setText(QCoreApplication.translate("Dialog", u"Cantidad", None));
         ___qtablewidgetitem3 = self.tableWidgetPreview.horizontalHeaderItem(3)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("Dialog", u"Precio", None));
+        ___qtablewidgetitem4 = self.tableWidgetPreview.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("Dialog", u"Fecha", None));
+        ___qtablewidgetitem5 = self.tableWidgetPreview.horizontalHeaderItem(5)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("Dialog", u"Evento", None));
         self.btnCorfirmar.setText(QCoreApplication.translate("Dialog", u"CONFIRMAR CAMBIOS", None))
     # retranslateUi
 

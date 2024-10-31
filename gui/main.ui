@@ -878,7 +878,7 @@ QHeaderView::section {
                 </column>
                 <column>
                  <property name="text">
-                  <string>Categoría</string>
+                  <string>Cantidad</string>
                  </property>
                 </column>
                 <column>
@@ -888,7 +888,12 @@ QHeaderView::section {
                 </column>
                 <column>
                  <property name="text">
-                  <string>Existencias</string>
+                  <string>Fecha</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Evento</string>
                  </property>
                 </column>
                </widget>

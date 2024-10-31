@@ -1137,6 +1137,16 @@ QHeaderView::section {
           <string>Precio</string>
          </property>
         </column>
+        <column>
+         <property name="text">
+          <string>Fecha</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Evento</string>
+         </property>
+        </column>
        </widget>
       </item>
       <item alignment="Qt::AlignHCenter">

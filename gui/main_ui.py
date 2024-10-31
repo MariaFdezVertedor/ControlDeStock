@@ -419,8 +419,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.addLayout(self.horizontalLayout_3)
 
         self.tableWidgetArticulos = QTableWidget(self.page2)
-        if (self.tableWidgetArticulos.columnCount() < 5):
-            self.tableWidgetArticulos.setColumnCount(5)
+        if (self.tableWidgetArticulos.columnCount() < 6):
+            self.tableWidgetArticulos.setColumnCount(6)
         __qtablewidgetitem = QTableWidgetItem()
         self.tableWidgetArticulos.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
@@ -431,6 +431,8 @@ class Ui_MainWindow(object):
         self.tableWidgetArticulos.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         __qtablewidgetitem4 = QTableWidgetItem()
         self.tableWidgetArticulos.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.tableWidgetArticulos.setHorizontalHeaderItem(5, __qtablewidgetitem5)
         self.tableWidgetArticulos.setObjectName(u"tableWidgetArticulos")
         self.tableWidgetArticulos.setFont(font2)
         self.tableWidgetArticulos.setStyleSheet(u"QTableWidget {\n"
@@ -533,11 +535,13 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem1 = self.tableWidgetArticulos.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Nombre", None));
         ___qtablewidgetitem2 = self.tableWidgetArticulos.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Categor\u00eda", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Cantidad", None));
         ___qtablewidgetitem3 = self.tableWidgetArticulos.horizontalHeaderItem(3)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Precio", None));
         ___qtablewidgetitem4 = self.tableWidgetArticulos.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Existencias", None));
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Fecha", None));
+        ___qtablewidgetitem5 = self.tableWidgetArticulos.horizontalHeaderItem(5)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Evento", None));
         self.btnInicio.setText(QCoreApplication.translate("MainWindow", u"INICIO", None))
         self.btnResumen.setText(QCoreApplication.translate("MainWindow", u"RESUMEN", None))
     # retranslateUi
