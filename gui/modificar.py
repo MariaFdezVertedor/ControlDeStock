@@ -78,8 +78,8 @@ class modificarWindow(QDialog):
         # Conectar btnEliminar con la función eliminarEnTabla
         self.btnEliminar.clicked.connect(self.eliminarEnTabla)
 
-        # Conectar btnConfirmar con la función confirmar
-        #self.btnConfirmar.clicked.connect(self.confirmar)
+        # Conectar btnConfirmar con la función confirmarCambios
+        self.btnConfirmar.clicked.connect(self.confirmarCambios)
 
     # Función para actualizar la etiqueta con la categoría seleccionada
     def actualizarCategoria(self, categoria):
@@ -185,6 +185,49 @@ class modificarWindow(QDialog):
                 if self.lblMensaje:
                     self.lblMensaje.setText("Seleccione la fila que desea eliminar")
 
+    def confirmarCambios(self):
+        # Obtener instancia de mainWindow
+        mainWindow = QApplication.activeWindow()
+
+        # Obtener widget de la tabla articulos desde mainWindow
+        tableWidgetArticulos = mainWindow.findChild(QTableWidget, "tableWidgetArticulos")
+
+        # Obtener los datos de tableWidgetPreview
+        row_count = self.tableWidgetPreview.rowCount()
+
+        for row in range(row_count):
+            # Obtener valor de cada celda de tableWidgetPreview
+            id = self.tableWidgetPreview.item(row, 0).text()
+            nombre = self.tableWidgetPreview.item(row, 1).text()
+            cantidad = self.tableWidgetPreview.item(row, 2).text()
+            precio = self.tableWidgetPreview.item(row, 3).text()
+
+            # Verificar si el artículo existe  en tableWidgetArticulos
+            existe = False
+            for i in range(tableWidgetArticulos.rowCount()):
+                if tableWidgetArticulos.item(i, 0).text() == nombre:
+                    # Si existe, actualizar la cantidad
+                    cantidadActual = int(tableWidgetArticulos.item(i, 4).text())
+                    nuevaCantidad = int(cantidad) + int(cantidadActual)
+                    tableWidgetArticulos.setItem(i, 4, QTableWidgetItem(str(nuevaCantidad)))
+                    existe = True
+                    break
+
+            # Si no existe, se añade a la tabla
+            if not existe:
+                rowPosition = tableWidgetArticulos.rowCount()
+                tableWidgetArticulos.insertRow(rowPosition)
+                tableWidgetArticulos.setItem(rowPosition, 0, QTableWidgetItem(str(rowPosition + 1)))
+                tableWidgetArticulos.setItem(rowPosition, 1, QTableWidgetItem(id))
+                tableWidgetArticulos.setItem(rowPosition, 2, QTableWidgetItem(nombre))
+                tableWidgetArticulos.setItem(rowPosition, 3, QTableWidgetItem(cantidad))
+                tableWidgetArticulos.setItem(rowPosition, 4, QTableWidgetItem(precio))
+                tableWidgetArticulos.setItem(rowPosition, 5, QTableWidgetItem("0"))
+        
+        # Cerrar la ventana despues de confirmar los cambios
+        self.close()
+                
+           
 # Crear una instancia de la clase
 if __name__ == "__main__":
     import sys

@@ -21,28 +21,16 @@ class Conexion():
         cur = self.con.cursor()
         cur.execute(sql_create_table1)
         cur.close()
-        
-        # Crear la tabla de categorías
-        sql_create_table_categorias = """ 
-        CREATE TABLE IF NOT EXISTS categorias (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nombre TEXT UNIQUE NOT NULL,
-            categoria_padre_id INTEGER, -- Referencia a la categoría padre
-            FOREIGN KEY (categoria_padre_id) REFERENCES categorias(id)
-        ); """
-        cur = self.con.cursor()
-        cur.execute(sql_create_table_categorias)
-        cur.close()
 
         # Crear la tabla de artículos
         sql_create_table2 = """ 
         CREATE TABLE IF NOT EXISTS articulos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nombre TEXT NOT NULL,
-            categoria_id INTEGER,
+            cantidad INTEGER NOT NULL,
             precio REAL NOT NULL,
-            existencias INTEGER NOT NULL,
-            FOREIGN KEY (categoria_id) REFERENCES categorias(id)
+            fecha DATE NOT NULL,
+            evento TEXT NOT NULL,
         ); """
         cur = self.con.cursor()
         cur.execute(sql_create_table2)
