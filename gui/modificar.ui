@@ -328,6 +328,11 @@ QComboBox:disabled {
         </property>
         <item>
          <property name="text">
+          <string>Selecciona</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>Gastos</string>
          </property>
         </item>
@@ -1150,7 +1155,7 @@ QHeaderView::section {
        </widget>
       </item>
       <item alignment="Qt::AlignHCenter">
-       <widget class="QPushButton" name="btnCorfirmar">
+       <widget class="QPushButton" name="btnConfirmar">
         <property name="minimumSize">
          <size>
           <width>250</width>

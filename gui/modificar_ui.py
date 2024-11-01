@@ -171,6 +171,7 @@ class Ui_Dialog(object):
         self.comboBox = QComboBox(self.frame_4)
         self.comboBox.addItem("")
         self.comboBox.addItem("")
+        self.comboBox.addItem("")
         self.comboBox.setObjectName(u"comboBox")
         self.comboBox.setMinimumSize(QSize(100, 25))
         self.comboBox.setMaximumSize(QSize(100, 25))
@@ -729,13 +730,13 @@ class Ui_Dialog(object):
 
         self.verticalLayout_2.addWidget(self.tableWidgetPreview)
 
-        self.btnCorfirmar = QPushButton(self.frame_3)
-        self.btnCorfirmar.setObjectName(u"btnCorfirmar")
-        self.btnCorfirmar.setMinimumSize(QSize(250, 0))
-        self.btnCorfirmar.setMaximumSize(QSize(250, 16777215))
-        self.btnCorfirmar.setFont(font1)
-        self.btnCorfirmar.setToolTipDuration(-4)
-        self.btnCorfirmar.setStyleSheet(u"QPushButton {\n"
+        self.btnConfirmar = QPushButton(self.frame_3)
+        self.btnConfirmar.setObjectName(u"btnConfirmar")
+        self.btnConfirmar.setMinimumSize(QSize(250, 0))
+        self.btnConfirmar.setMaximumSize(QSize(250, 16777215))
+        self.btnConfirmar.setFont(font1)
+        self.btnConfirmar.setToolTipDuration(-4)
+        self.btnConfirmar.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
 "    border: 1px solid gray;\n"
 "    border-radius: 15px;\n"
@@ -758,7 +759,7 @@ class Ui_Dialog(object):
 "}\n"
 "")
 
-        self.verticalLayout_2.addWidget(self.btnCorfirmar, 0, Qt.AlignHCenter)
+        self.verticalLayout_2.addWidget(self.btnConfirmar, 0, Qt.AlignHCenter)
 
 
         self.verticalLayout.addWidget(self.frame_3)
@@ -774,8 +775,9 @@ class Ui_Dialog(object):
         self.label.setText("")
         self.label_2.setText(QCoreApplication.translate("Dialog", u"Evento", None))
         self.label_3.setText(QCoreApplication.translate("Dialog", u"Fecha", None))
-        self.comboBox.setItemText(0, QCoreApplication.translate("Dialog", u"Gastos", None))
-        self.comboBox.setItemText(1, QCoreApplication.translate("Dialog", u"Compras", None))
+        self.comboBox.setItemText(0, QCoreApplication.translate("Dialog", u"Selecciona", None))
+        self.comboBox.setItemText(1, QCoreApplication.translate("Dialog", u"Gastos", None))
+        self.comboBox.setItemText(2, QCoreApplication.translate("Dialog", u"Compras", None))
 
         self.btnRefresco.setText("")
         self.btnAlcohol.setText("")
@@ -803,6 +805,6 @@ class Ui_Dialog(object):
         ___qtablewidgetitem4.setText(QCoreApplication.translate("Dialog", u"Fecha", None));
         ___qtablewidgetitem5 = self.tableWidgetPreview.horizontalHeaderItem(5)
         ___qtablewidgetitem5.setText(QCoreApplication.translate("Dialog", u"Evento", None));
-        self.btnCorfirmar.setText(QCoreApplication.translate("Dialog", u"CONFIRMAR CAMBIOS", None))
+        self.btnConfirmar.setText(QCoreApplication.translate("Dialog", u"CONFIRMAR CAMBIOS", None))
     # retranslateUi
 

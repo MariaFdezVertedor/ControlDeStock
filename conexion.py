@@ -101,45 +101,7 @@ class Conexion():
         cur.executemany("INSERT INTO categorias (nombre, categoria_padre_id) VALUES (?, ?)", categorias_principales)
         self.con.commit()
 
-        #Obtener el ID de 'cerveza' y 'alcohol' para crear subcategorías
-        cur.execute("SELECT id FROM categorias WHERE nombre = ?", ('cerveza',))
-        cerveza_id = cur.fetchone()[0]
-        cur.execute("SELECT id FROM categorias WHERE nombre = ?", ('alcohol',))
-        alcohol_id = cur.fetchone()[0]
-
-        #Insertar subcategorías para 'cerveza'
-        subcategorias_cerveza = [
-            ('sin gluten', cerveza_id),
-            ('sin alcohol', cerveza_id),
-            ('normal', cerveza_id),
-        ]
-
-        cur.executemany("INSERT INTO categorias (nombre, categoria_padre_id) VALUES (?, ?)", subcategorias_cerveza)
-
-        #Insertar subcategorías para 'alcohol'
-        subcategorias_alcohol = [
-            ('Ginebra', alcohol_id),
-            ('Ron', alcohol_id),
-            ('Whisky', alcohol_id),
-            ('Tequila', alcohol_id),
-            ('Vodka', alcohol_id),
-        ]
-
-        cur.executemany("INSERT INTO categorias (nombre, categoria_padre_id) VALUES (?, ?)", subcategorias_alcohol)
-
-        #Obtener ID de 'vino' para crear subcategorías
-        cur.execute("SELECT id FROM categorias WHERE nombre = ?", ('vino',))
-        vino_id = cur.fetchone()[0]
-
-        #Insertar subcategorías para 'vino'
-        subcategorias_vino = [
-            ('Blanco', vino_id),
-            ('Tinto', vino_id),
-            ('Espumoso', vino_id),
-        ]
-
-        cur.executemany("INSERT INTO categorias (nombre, categoria_padre_id) VALUES (?, ?)", subcategorias_vino)    
-
+        cur.executemany("INSERT INTO categorias (nombre, categoria_padre_id) VALUES (?, ?)")
         #Confirmar cambios
         self.con.commit()
         cur.close()

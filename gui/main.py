@@ -1,7 +1,7 @@
 import sys
 from PyQt6 import uic
 from PyQt6.QtCore import Qt, QEasingCurve, QPropertyAnimation
-from PyQt6.QtWidgets import QMessageBox, QApplication, QMainWindow, QSizeGrip, QTableWidgetItem
+from PyQt6.QtWidgets import QMessageBox, QApplication, QMainWindow, QSizeGrip, QTableWidgetItem, QTableWidget
 import sqlite3
 from gui.modificar import modificarWindow
 
