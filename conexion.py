@@ -30,7 +30,7 @@ class Conexion():
             cantidad INTEGER NOT NULL,
             precio REAL NOT NULL,
             fecha DATE NOT NULL,
-            evento TEXT NOT NULL,
+            evento TEXT NOT NULL
         ); """
         cur = self.con.cursor()
         cur.execute(sql_create_table2)
@@ -41,11 +41,11 @@ class Conexion():
         CREATE TABLE IF NOT EXISTS compras (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             articulo_id INTEGER NOT NULL,
-        cantidad INTEGER NOT NULL,
-        precio REAL NOT NULL,
-        fecha DATE NOT NULL,
-        FOREIGN KEY (articulo_id) REFERENCES articulos(id)
-    ); """
+            cantidad INTEGER NOT NULL,
+            precio REAL NOT NULL,
+            fecha DATE NOT NULL,
+            FOREIGN KEY (articulo_id) REFERENCES articulos(id)
+        ); """
         cur = self.con.cursor()
         cur.execute(sql_create_table3)
         cur.close()

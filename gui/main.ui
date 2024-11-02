@@ -671,7 +671,7 @@ border-bottom-left-radius:20px;
                      <property name="font">
                       <font>
                        <family>Questrial</family>
-                       <pointsize>-1</pointsize>
+                       <pointsize>12</pointsize>
                       </font>
                      </property>
                      <property name="styleSheet">
@@ -681,7 +681,6 @@ border-bottom-left-radius:20px;
     border-radius: 15px;
     padding: 4px;
     color: #01a78a;
-    font-size: 14px;
     font-family: &quot;Questrial&quot;;
     text-align: center;
 }
@@ -699,7 +698,7 @@ QPushButton:pressed {
 </string>
                      </property>
                      <property name="text">
-                      <string>ALMACEN</string>
+                      <string>ALMACÉN</string>
                      </property>
                     </widget>
                    </item>
@@ -722,7 +721,7 @@ QPushButton:pressed {
                        <property name="font">
                         <font>
                          <family>Questrial</family>
-                         <pointsize>-1</pointsize>
+                         <pointsize>10</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -732,7 +731,6 @@ QPushButton:pressed {
     border-radius: 30px;
     padding: 4px;
     color: white;
-    font-size: 14px;
     font-family: &quot;Questrial&quot;;
     text-align: center;
 }
@@ -784,7 +782,7 @@ QPushButton:pressed {
                        <property name="font">
                         <font>
                          <family>Questrial</family>
-                         <pointsize>-1</pointsize>
+                         <pointsize>10</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -794,7 +792,6 @@ QPushButton:pressed {
     border-radius: 15px;
     padding: 4px;
     color: white;
-    font-size: 14px;
     font-family: &quot;Questrial&quot;;
     text-align: center;
 }
@@ -828,7 +825,7 @@ QPushButton:pressed {
                 <property name="font">
                  <font>
                   <family>Questrial</family>
-                  <pointsize>-1</pointsize>
+                  <pointsize>14</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -837,7 +834,6 @@ QPushButton:pressed {
     border: 2px solid gray;
     border-radius: 10px;
     font-family: &quot;Questrial&quot;;
-    font-size: 14px;
 }
 
 QTableWidget::item {

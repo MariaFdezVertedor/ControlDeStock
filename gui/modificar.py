@@ -13,8 +13,13 @@ class modificarWindow(QDialog):
         # Configurar las conexiones de los botones
         self.setupConexiones()
 
-        # Atributo para verificar si hay campos en blanco
-        self.camposModificados = False
+        # Inicializar valoresde dateEdit y comboBox
+        self.valoresIniciales()
+
+    def valoresIniciales(self):
+        # Guardar sus valores iniciales
+        self.fechaInicial = self.dateEdit.date()
+        self.comboBoxInicial = self.comboBox.currentIndex()
 
     # Inicializar los botones y widgets
     def inicializarBotones(self):
@@ -42,6 +47,11 @@ class modificarWindow(QDialog):
         self.dateEdit = self.findChild(QDateEdit, 'dateEdit')
         self.comboBox = self.findChild(QComboBox, 'comboBox')
 
+        # Conectar señales para verificar cambios
+        self.lineEvento.textChanged.connect(self.verificarCampos)
+        self.dateEdit.dateChanged.connect(self.verificarCampos)
+        self.comboBox.currentIndexChanged.connect(self.verificarCampos)
+
         # Configurar valores iniciales
         if self.lblCategoria is not None:
             self.lblCategoria.setText("-")
@@ -52,11 +62,7 @@ class modificarWindow(QDialog):
             self.lblMensaje.setText("-")
         else:
             print("Error: lblEstado no está definida.")
-        
-        # Deshabilitar btnConfirmar hasta que se completen los campos necesarios
-        self.btnConfirmar.setEnabled(False)
-        
-
+         
     # Conectar los botones con las funciones correspondientes
     def setupConexiones(self):
         self.btnRefresco.clicked.connect(lambda: self.actualizarCategoria("Refresco"))
@@ -72,35 +78,72 @@ class modificarWindow(QDialog):
         self.btnEliminar.clicked.connect(self.eliminarEnTabla)
         self.btnConfirmar.clicked.connect(self.confirmarCambios)
 
-        # Conectar campos necesarios para la verificación
-        self.lineEvento.textChanged.connect(self.verificarCampos)
-        self.dateEdit.dateChanged.connect(self.verificarCampos)
-        self.comboBox.currentIndexChanged.connect(self.verificarCampos)
-
     def verificarCampos(self):
-        camposIncompletos = []
-
-        # Verificar campos y agregarlos a la lista camposIncompletos
-        if not self.lineEvento.text():
-            camposIncompletos.append("Evento")
-        if not self.dateEdit.date().isValid():
-            camposIncompletos.append("Fecha")
-        if not self.comboBox.currentText() not in ["Gastos", "Compras"]:
-            camposIncompletos.append("Categoría")
-
-        # Si hay campos imcompletos, deshabilitar btnConfirmar
-        if camposIncompletos:
+        # Verificar si dateEdit, comboBox o lineEdit están en el estado correcto
+        if (self.dateEdit.date() == self.fechaInicial or self.comboBox.currentIndex() == self.comboBoxInicial or self.lineEvento.text() == ""):
             self.btnConfirmar.setEnabled(False)
-            # Mensaje concatenado con los campos incompletos
-            mensaje = f"Campo(s)" + ",".join(camposIncompletos) + " no está(n) correctamente cumplimentado(s)"
-            self.lblMensaje.setText(mensaje)
+            self.lblMensaje.setText("Debe cumplimentar los campos Evento, Fecha y Categoría correctamente.")
         else:
-            # Habilitar btnConfirmar si todos los campos estan completos
             self.btnConfirmar.setEnabled(True)
-            # Limpiar mensaje de estado
-            self.lblMensaje.setText(" ")
-        
-        self.camposModificados = True
+
+    def confirmarCambios(self):
+        # Asegurarnos de que el botón está habilitado antes de proceder
+        if not self.btnConfirmar.isEnabled():
+            return
+
+        self.lblMensaje.setText("-")
+
+        # Obtener instancia de mainWindow
+        mainWindow = QApplication.activeWindow()
+
+        if mainWindow is None:
+            print("Error: No se pudo obtener mainWindow.")
+            return
+
+        # Obtener widget de la tabla articulos desde mainWindow
+        tableWidgetArticulos = mainWindow.findChild(QTableWidget, "tableWidgetArticulos")
+
+        if tableWidgetArticulos is None:
+            print("Error: No se pudo obtener tableWidgetArticulos.")
+            return
+
+        # Obtener los datos de tableWidgetPreview
+        row_count = self.tableWidgetPreview.rowCount()
+
+        for row in range(row_count):
+            # Obtener valor de cada celda de tableWidgetPreview
+            id = self.tableWidgetPreview.item(row, 0).text()
+            nombre = self.tableWidgetPreview.item(row, 1).text()
+            cantidad = self.tableWidgetPreview.item(row, 2).text()
+            precio = self.tableWidgetPreview.item(row, 3).text()
+            fecha = self.tableWidgetPreview.item(row, 4).text()
+            evento = self.tableWidgetPreview.item(row, 5).text()
+
+           # Verificar si el artículo existe  en tableWidgetArticulos
+            existe = False
+            for i in range(tableWidgetArticulos.rowCount()):
+                if tableWidgetArticulos.item(i, 0).text() == nombre:
+                    # Si existe, actualizar la cantidad
+                    cantidadActual = int(tableWidgetArticulos.item(i, 4).text())
+                    nuevaCantidad = int(cantidad) + int(cantidadActual)
+                    tableWidgetArticulos.setItem(i, 4, QTableWidgetItem(str(nuevaCantidad)))
+                    existe = True
+                    break
+
+            # Si no existe, se añade a la tabla
+            if not existe:
+                rowPosition = tableWidgetArticulos.rowCount()
+                tableWidgetArticulos.insertRow(rowPosition)
+                tableWidgetArticulos.setItem(rowPosition, 0, QTableWidgetItem(str(rowPosition + 1)))
+                tableWidgetArticulos.setItem(rowPosition, 1, QTableWidgetItem(id))
+                tableWidgetArticulos.setItem(rowPosition, 2, QTableWidgetItem(nombre))
+                tableWidgetArticulos.setItem(rowPosition, 3, QTableWidgetItem(cantidad))
+                tableWidgetArticulos.setItem(rowPosition, 4, QTableWidgetItem(precio))
+                tableWidgetArticulos.setItem(rowPosition, 5, QTableWidgetItem(fecha))
+                tableWidgetArticulos.setItem(rowPosition, 6, QTableWidgetItem(evento))
+
+            # Cerrar la ventana despues de confirmar los cambios
+            self.close()
 
     # Función para actualizar la etiqueta con la categoría seleccionada
     def actualizarCategoria(self, categoria):
@@ -209,60 +252,6 @@ class modificarWindow(QDialog):
             else:
                 if self.lblMensaje:
                     self.lblMensaje.setText("Seleccione la fila que desea eliminar")
-
-    def confirmarCambios(self):
-        # Verificar si los campos se han modificado
-        if not self.camposModificados:
-            self.lblMensaje.setText("Los campos no han sido modificados.")
-            return
-        
-        # Validamos antes de confirmar
-        if self.btnConfirmar.isEnabled():
-            # Obtener instancia de mainWindow
-            mainWindow = QApplication.activeWindow()
-
-            # Obtener widget de la tabla articulos desde mainWindow
-            tableWidgetArticulos = mainWindow.findChild(QTableWidget, "tableWidgetArticulos")
-
-            # Obtener los datos de tableWidgetPreview
-            row_count = self.tableWidgetPreview.rowCount()
-
-            for row in range(row_count):
-                # Obtener valor de cada celda de tableWidgetPreview
-                id = self.tableWidgetPreview.item(row, 0).text()
-                nombre = self.tableWidgetPreview.item(row, 1).text()
-                cantidad = self.tableWidgetPreview.item(row, 2).text()
-                precio = self.tableWidgetPreview.item(row, 3).text()
-                fecha = self.tableWidgetPreview.item(row, 4).text()
-                evento = self.tableWidgetPreview.item(row, 5).text()
-
-                # Verificar si el artículo existe  en tableWidgetArticulos
-                existe = False
-                for i in range(tableWidgetArticulos.rowCount()):
-                    if tableWidgetArticulos.item(i, 0).text() == nombre:
-                        # Si existe, actualizar la cantidad
-                        cantidadActual = int(tableWidgetArticulos.item(i, 4).text())
-                        nuevaCantidad = int(cantidad) + int(cantidadActual)
-                        tableWidgetArticulos.setItem(i, 4, QTableWidgetItem(str(nuevaCantidad)))
-                        existe = True
-                        break
-
-                # Si no existe, se añade a la tabla
-                if not existe:
-                    rowPosition = tableWidgetArticulos.rowCount()
-                    tableWidgetArticulos.insertRow(rowPosition)
-                    tableWidgetArticulos.setItem(rowPosition, 0, QTableWidgetItem(str(rowPosition + 1)))
-                    tableWidgetArticulos.setItem(rowPosition, 1, QTableWidgetItem(id))
-                    tableWidgetArticulos.setItem(rowPosition, 2, QTableWidgetItem(nombre))
-                    tableWidgetArticulos.setItem(rowPosition, 3, QTableWidgetItem(cantidad))
-                    tableWidgetArticulos.setItem(rowPosition, 4, QTableWidgetItem(precio))
-                    tableWidgetArticulos.setItem(rowPosition, 5, QTableWidgetItem(fecha))
-                    tableWidgetArticulos.setItem(rowPosition, 6, QTableWidgetItem(evento))
-
-        
-            # Cerrar la ventana despues de confirmar los cambios
-            self.close()
-                
            
 # Crear una instancia de la clase
 if __name__ == "__main__":

@@ -317,14 +317,13 @@ class Ui_MainWindow(object):
         self.btnAlmacen = QPushButton(self.frame)
         self.btnAlmacen.setObjectName(u"btnAlmacen")
         self.btnAlmacen.setMinimumSize(QSize(400, 0))
-        self.btnAlmacen.setFont(font2)
+        self.btnAlmacen.setFont(font1)
         self.btnAlmacen.setStyleSheet(u"QPushButton {\n"
 "    background-color:#ffffff;\n"
 "    border: 1px solid gray;\n"
 "    border-radius: 15px;\n"
 "    padding: 4px;\n"
 "    color: #01a78a;\n"
-"    font-size: 14px;\n"
 "    font-family: \"Questrial\";\n"
 "    text-align: center;\n"
 "}\n"
@@ -349,14 +348,16 @@ class Ui_MainWindow(object):
         self.btnModificar.setObjectName(u"btnModificar")
         self.btnModificar.setMinimumSize(QSize(170, 25))
         self.btnModificar.setMaximumSize(QSize(170, 25))
-        self.btnModificar.setFont(font2)
+        font3 = QFont()
+        font3.setFamilies([u"Questrial"])
+        font3.setPointSize(10)
+        self.btnModificar.setFont(font3)
         self.btnModificar.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
 "    border: 1px solid gray;\n"
 "    border-radius: 30px;\n"
 "    padding: 4px;\n"
 "    color: white;\n"
-"    font-size: 14px;\n"
 "    font-family: \"Questrial\";\n"
 "    text-align: center;\n"
 "}\n"
@@ -383,14 +384,13 @@ class Ui_MainWindow(object):
         self.btnActualizar.setObjectName(u"btnActualizar")
         self.btnActualizar.setMinimumSize(QSize(170, 25))
         self.btnActualizar.setMaximumSize(QSize(140, 25))
-        self.btnActualizar.setFont(font2)
+        self.btnActualizar.setFont(font3)
         self.btnActualizar.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgba(1, 167, 138, 1);\n"
 "    border: 1px solid gray;\n"
 "    border-radius: 15px;\n"
 "    padding: 4px;\n"
 "    color: white;\n"
-"    font-size: 14px;\n"
 "    font-family: \"Questrial\";\n"
 "    text-align: center;\n"
 "}\n"
@@ -434,13 +434,15 @@ class Ui_MainWindow(object):
         __qtablewidgetitem5 = QTableWidgetItem()
         self.tableWidgetArticulos.setHorizontalHeaderItem(5, __qtablewidgetitem5)
         self.tableWidgetArticulos.setObjectName(u"tableWidgetArticulos")
-        self.tableWidgetArticulos.setFont(font2)
+        font4 = QFont()
+        font4.setFamilies([u"Questrial"])
+        font4.setPointSize(14)
+        self.tableWidgetArticulos.setFont(font4)
         self.tableWidgetArticulos.setStyleSheet(u"QTableWidget {\n"
 "    background-color: rgba(255, 255, 255, 1);\n"
 "    border: 2px solid gray;\n"
 "    border-radius: 10px;\n"
 "    font-family: \"Questrial\";\n"
-"    font-size: 14px;\n"
 "}\n"
 "\n"
 "QTableWidget::item {\n"
@@ -527,7 +529,7 @@ class Ui_MainWindow(object):
         self.btnGastos.setText(QCoreApplication.translate("MainWindow", u"GASTOS", None))
         self.btnCompras.setText(QCoreApplication.translate("MainWindow", u"COMPRAS", None))
         self.label_2.setText("")
-        self.btnAlmacen.setText(QCoreApplication.translate("MainWindow", u"ALMACEN", None))
+        self.btnAlmacen.setText(QCoreApplication.translate("MainWindow", u"ALMAC\u00c9N", None))
         self.btnModificar.setText(QCoreApplication.translate("MainWindow", u"MODICAR EXISTENCIAS", None))
         self.btnActualizar.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))
         ___qtablewidgetitem = self.tableWidgetArticulos.horizontalHeaderItem(0)
