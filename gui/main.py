@@ -12,7 +12,9 @@ class MainWindow(QMainWindow):
         self.setup_ui()
         self.inicializarBotones()  
         self.setupConexiones()
-        self.tableWidgetArticulos = QTableWidget() 
+        self.tableWidgetArticulos = self.ui.tableWidgetArticulos
+
+        self.insertarDatosPrueba()
 
     # Configuración inicial de la interfaz
     def setup_ui(self):
@@ -127,7 +129,7 @@ class MainWindow(QMainWindow):
     # Mostrar la página de "Almacén" y cargar artículos
     def mostrarAlmacen(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.page2)
-        self.cargar_articulos()
+        self.cargarArticulos()
 
     # Mostrar la ventana de modificar
     def mostrarModificar(self):
@@ -145,20 +147,38 @@ class MainWindow(QMainWindow):
             articulos = cur.fetchall()
 
             # Limpiar tabla antes de cargar datos
-            self.ui.tableWidgetArticulos.setRowCount(0)
+            self.tableWidgetArticulos.setRowCount(0)
 
             # Rellenar tabla con los datos 
             for i, articulo in enumerate(articulos):
-                row_position = self.ui.tableWidgetArticulos.rowCount()
-                self.ui.tableWidgetARticulos.insertRow(row_position)
+                row_position = self.tableWidgetArticulos.rowCount()
+                self.tableWidgetArticulos.insertRow(row_position)
                 for column, data in enumerate(articulo):
-                    self.ui.tableWidgetArticulos.setItem(row_position, column, QTableWidgetItem(str(data)))
+                    self.tableWidgetArticulos.setItem(row_position, column, QTableWidgetItem(str(data)))
 
             cur.close()
             con.close()
         
         except sqlite3.Error as error:
             QMessageBox.critical(self, "Error", f"No se pudieron cargar los articulos: {str(error)}")
+        
+    def insertarDatosPrueba(self):
+    # Definir algunos datos de prueba con los campos requeridos
+        datosPrueba = [
+        ("Zumo", 10, 5.50, "2024-11-01", "Ingreso inicial"),
+        ("Cava", 15, 7.25, "2024-11-01", "Compra adicional"),
+        ("Agua", 8, 12.00, "2024-11-02", "Inventario inicial")
+    ]
+
+    # Insertar cada fila en la tabla `tableWidgetArticulos`
+        for articulo in datosPrueba:
+            row_position = self.tableWidgetArticulos.rowCount()
+            self.tableWidgetArticulos.insertRow(row_position)
+            # Los datos de prueba no incluyen `id` porque es autoincremental, así que se agrega vacío o un marcador.
+            self.tableWidgetArticulos.setItem(row_position, 0, QTableWidgetItem("Auto"))
+            for column, data in enumerate(articulo, start=1):
+                self.tableWidgetArticulos.setItem(row_position, column, QTableWidgetItem(str(data)))
+
                     
 if __name__ == "__main__":
     app = QApplication(sys.argv)
