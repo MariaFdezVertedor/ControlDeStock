@@ -6,6 +6,7 @@ import sqlite3
 from gui.modificar import modificarWindow
 
 
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -45,7 +46,6 @@ class MainWindow(QMainWindow):
         self.ui.btnRestaurar.clicked.connect(self.controlRestaurar)
         self.ui.btnMaximizar.clicked.connect(self.controlMaximizar)
         self.ui.bntCerrar.clicked.connect(self.close)
-        self.tableWidgetArticulos = self.findChild(QTableWidget, "tableWidgetArticulos")
 
         # Menú lateral
         self.ui.bntMenu.clicked.connect(self.moverMenu)
@@ -127,14 +127,14 @@ class MainWindow(QMainWindow):
             articulos = cur.fetchall()
 
             # Limpiar la tabla antes de cargar los datos
-            self.tableWidgetArticulos.setRowCount(0)
+            self.ui.tableWidgetArticulos.setRowCount(0)
 
             # Rellenar la tabla con los datos obtenidos
             for articulo in articulos:
-                row_position = self.tableWidgetArticulos.rowCount()
-                self.tableWidgetArticulos.insertRow(row_position)
+                row_position = self.ui.tableWidgetArticulos.rowCount()
+                self.ui.tableWidgetArticulos.insertRow(row_position)
                 for column, data in enumerate(articulo):
-                    self.tableWidgetArticulos.setItem(row_position, column, QTableWidgetItem(str(data)))
+                    self.ui.tableWidgetArticulos.setItem(row_position, column, QTableWidgetItem(str(data)))
 
             cur.close()
             con.close()

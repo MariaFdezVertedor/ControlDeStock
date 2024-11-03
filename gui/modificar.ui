@@ -140,7 +140,6 @@ border: 2px solid rgba(1, 167, 138, 1);
 border-radius: 10px;                      
 padding: 5px;
 color: rgba(34, 34, 34, 0.85);              
-font-size: 12px;
 font-family: &quot;Questrial&quot;;
 </string>
         </property>
@@ -192,7 +191,6 @@ font-family: &quot;Questrial&quot;;
     border-radius: 10px;
     padding: 5px;
     color: rgba(34, 34, 34, 0.85);
-    font-size: 12px;
     font-family: &quot;Questrial&quot;;
 }
 
@@ -216,13 +214,11 @@ QDateEdit::up-button, QDateEdit::down-button {
 }
 
 QDateEdit::up-arrow {
-    image: url(:/icons/up_arrow.svg);
     width: 10px;
     height: 10px;
 }
 
 QDateEdit::down-arrow {
-    image: url(:/icons/down_arrow.svg);
     width: 10px;
     height: 10px;
 }
@@ -277,7 +273,6 @@ QDateEdit:disabled {
         <property name="font">
          <font>
           <family>Questrial</family>
-          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -287,7 +282,6 @@ QDateEdit:disabled {
     border-radius: 10px;
     padding: 5px;
     color: rgba(34, 34, 34, 0.85);
-    font-size: 12px;
     font-family: &quot;Questrial&quot;;
 }
 
@@ -299,11 +293,6 @@ QComboBox::drop-down {
     background-color: rgba(1, 167, 138, 1);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-}
-
-QComboBox::down-arrow {
-    width: 10px;
-    height: 10px;
 }
 
 QComboBox:hover {
@@ -322,7 +311,6 @@ QComboBox:disabled {
     color: rgba(150, 150, 150, 1);
     border: 2px solid rgba(200, 200, 200, 0.8);
 }
-
 </string>
         </property>
         <item>
@@ -391,7 +379,6 @@ QComboBox:disabled {
           <property name="font">
            <font>
             <family>Segoe UI</family>
-            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="layoutDirection">
@@ -405,7 +392,6 @@ QComboBox:disabled {
     border-radius: 15px;
     padding: 4px;
     color: white;
-    font-size: 14px;
     font-family: &quot;Segoe UI&quot;;
     text-align: center;
 }
@@ -444,7 +430,6 @@ QPushButton:pressed {
           <property name="font">
            <font>
             <family>Segoe UI</family>
-            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
@@ -455,7 +440,6 @@ QPushButton:pressed {
     border-radius: 15px;
     padding: 4px;
     color: white;
-    font-size: 14px;
     font-family: &quot;Segoe UI&quot;;
     text-align: center;
 }
@@ -499,7 +483,6 @@ QPushButton:pressed {
     border-radius: 15px;
     padding: 4px;
     color: white;
-    font-size: 14px;
     font-family: &quot;Segoe UI&quot;;
     text-align: center;
 }
@@ -538,7 +521,6 @@ QPushButton:pressed {
           <property name="font">
            <font>
             <family>Segoe UI</family>
-            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
@@ -549,7 +531,6 @@ QPushButton:pressed {
     border-radius: 15px;
     padding: 4px;
     color: white;
-    font-size: 14px;
     font-family: &quot;Segoe UI&quot;;
     text-align: center;
 }
@@ -588,7 +569,6 @@ QPushButton:pressed {
           <property name="font">
            <font>
             <family>Segoe UI</family>
-            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
@@ -599,7 +579,6 @@ QPushButton:pressed {
     border-radius: 15px;
     padding: 4px;
     color: white;
-    font-size: 14px;
     font-family: &quot;Segoe UI&quot;;
     text-align: center;
 }
@@ -638,7 +617,6 @@ QPushButton:pressed {
           <property name="font">
            <font>
             <family>Segoe UI</family>
-            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
@@ -649,7 +627,6 @@ QPushButton:pressed {
     border-radius: 15px;
     padding: 4px;
     color: white;
-    font-size: 14px;
     font-family: &quot;Segoe UI&quot;;
     text-align: center;
 }
@@ -693,7 +670,6 @@ QPushButton:pressed {
     border-radius: 15px;
     padding: 4px;
     color: white;
-    font-size: 14px;
     font-family: &quot;Segoe UI&quot;;
     text-align: center;
 }
@@ -817,7 +793,6 @@ QPushButton:pressed {
           <property name="font">
            <font>
             <family>Questrial</family>
-            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
@@ -826,7 +801,6 @@ QPushButton:pressed {
     border: 1px solid #8E8E8E;
     border-radius: 8px;
     padding: 5px;
-    font-size: 16px;
     font-family: 'Questrial', sans-serif; 
     color: #333333;
 }
@@ -893,7 +867,6 @@ QSpinBox::down-button:pressed {
     border-radius: 15px;
     padding: 4px;
     color: white;
-    font-size: 14px;
     font-family: &quot;Segoe UI&quot;;
     text-align: center;
     width: 40px;
@@ -942,7 +915,6 @@ QPushButton:pressed {
     border-radius: 15px;
     padding: 4px;
     color: white;
-    font-size: 14px;
     font-family: &quot;Segoe UI&quot;;
     text-align: center;
     width: 40px;
@@ -991,7 +963,6 @@ QPushButton:pressed {
     border-radius: 15px;
     padding: 4px;
     color: white;
-    font-size: 14px;
     font-family: &quot;Segoe UI&quot;;
     text-align: center;
     width: 40px;
@@ -1065,13 +1036,17 @@ QPushButton:pressed {
           <height>0</height>
          </size>
         </property>
+        <property name="font">
+         <font>
+          <family>Questrial</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true">QTableWidget {
     background-color: rgba(255, 255, 255, 1);
     border: 2px solid gray;
     border-radius: 10px;
-    font-family: &quot;Segoe UI&quot;;
-    font-size: 14px;
 }
 
 QTableWidget::item {
@@ -1170,7 +1145,6 @@ QHeaderView::section {
         <property name="font">
          <font>
           <family>Questrial</family>
-          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="toolTipDuration">
@@ -1183,7 +1157,6 @@ QHeaderView::section {
     border-radius: 15px;
     padding: 4px;
     color: white;
-    font-size: 12px;
     font-family: &quot;Questrial&quot;;
     text-align: center;
 }
