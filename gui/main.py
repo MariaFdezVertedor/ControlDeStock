@@ -1,18 +1,16 @@
 import sys
 from PyQt6 import uic
 from PyQt6.QtCore import Qt, QEasingCurve, QPropertyAnimation
-from PyQt6.QtWidgets import QMessageBox, QApplication, QMainWindow, QSizeGrip, QTableWidgetItem, QTableWidget
-import sqlite3
+from PyQt6.QtWidgets import QApplication, QMainWindow, QSizeGrip
 from gui.modificar import modificarWindow
-
-
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = uic.loadUi("gui/main.ui")
         self.setup_ui()
-        self.setup_connections()
+        self.inicializarBotones()  
+        self.setupConexiones()      
 
     # Configuración inicial de la interfaz
     def setup_ui(self):
@@ -31,27 +29,49 @@ class MainWindow(QMainWindow):
         # Ocultar el botón de restaurar inicialmente
         self.ui.btnRestaurar.hide()
 
-    # Conexiones de los botones y elementos de la interfaz
-    def setup_connections(self):
-        # Acceder a las páginas del stackedWidget
-        self.ui.btn_Inicio.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page))
-        self.ui.btn_Resumen.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page1))
-        self.ui.btn_Almacen.clicked.connect(self.mostrarAlmacen)
-        self.ui.btnModificar.clicked.connect(self.mostrarModificar)
-        self.ui.btn_Gastos.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page3))
-        self.ui.btn_Compras.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page4))
+    # Inicializar los botones y widgets
+    def inicializarBotones(self):
+        # Inicializa los botones
+        self.btn_Inicio = self.ui.btn_Inicio
+        self.btn_Resumen = self.ui.btn_Resumen
+        self.btn_Almacen = self.ui.btn_Almacen
+        self.btnModificar = self.ui.btnModificar
+        self.btn_Gastos = self.ui.btn_Gastos
+        self.btn_Compras = self.ui.btn_Compras
 
         # Controles de la barra de título
-        self.ui.btnMinimizar.clicked.connect(self.controlMinimizar)
-        self.ui.btnRestaurar.clicked.connect(self.controlRestaurar)
-        self.ui.btnMaximizar.clicked.connect(self.controlMaximizar)
-        self.ui.bntCerrar.clicked.connect(self.close)
+        self.btnMinimizar = self.ui.btnMinimizar
+        self.btnRestaurar = self.ui.btnRestaurar
+        self.btnMaximizar = self.ui.btnMaximizar
+        self.btnCerrar = self.ui.bntCerrar
 
         # Menú lateral
-        self.ui.bntMenu.clicked.connect(self.moverMenu)
+        self.btnMenu = self.ui.bntMenu
+        
+        # Evento para mover la ventana
+        self.frameSuperior = self.ui.frameSuperior
+
+    # Conexiones de los botones y elementos de la interfaz
+    def setupConexiones(self):
+        # Acceder a las páginas del stackedWidget
+        self.btn_Inicio.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page))
+        self.btn_Resumen.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page1))
+        self.btn_Almacen.clicked.connect(self.mostrarAlmacen)
+        self.btnModificar.clicked.connect(self.mostrarModificar)
+        self.btn_Gastos.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page3))
+        self.btn_Compras.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page4))
+
+        # Controles de la barra de título
+        self.btnMinimizar.clicked.connect(self.controlMinimizar)
+        self.btnRestaurar.clicked.connect(self.controlRestaurar)
+        self.btnMaximizar.clicked.connect(self.controlMaximizar)
+        self.btnCerrar.clicked.connect(self.close)
+
+        # Menú lateral
+        self.btnMenu.clicked.connect(self.moverMenu)
 
         # Evento para mover la ventana
-        self.ui.frameSuperior.mouseMoveEvent = self.moveWindow
+        self.frameSuperior.mouseMoveEvent = self.moveWindow
 
     # Actualiza la posición del grip de redimensionamiento
     def update_grip_position(self):
@@ -66,14 +86,14 @@ class MainWindow(QMainWindow):
     # Método para restaurar la ventana
     def controlRestaurar(self):
         self.showNormal()
-        self.ui.btnRestaurar.hide()
-        self.ui.btnMaximizar.show()
+        self.btnRestaurar.hide()
+        self.btnMaximizar.show()
 
     # Método para maximizar la ventana
     def controlMaximizar(self):
         self.showMaximized()
-        self.ui.btnMaximizar.hide()
-        self.ui.btnRestaurar.show()
+        self.btnMaximizar.hide()
+        self.btnRestaurar.show()
 
     # Método para mover el menú lateral
     def moverMenu(self):
@@ -111,37 +131,6 @@ class MainWindow(QMainWindow):
     def mostrarModificar(self):
         self.modificar_window = modificarWindow()
         self.modificar_window.show()
-
-    # Cargar los artículos en la tabla
-    def cargar_articulos(self):
-        try:
-            con = sqlite3.connect("stock.db")
-            cur = con.cursor()
-
-            # Ejecutar la consulta para obtener los artículos
-            cur.execute("""
-                SELECT a.id, a.nombre, c.nombre, a.precio, a.existencias 
-                FROM articulos a 
-                JOIN categorias c ON a.categoria_id = c.id
-            """)
-            articulos = cur.fetchall()
-
-            # Limpiar la tabla antes de cargar los datos
-            self.ui.tableWidgetArticulos.setRowCount(0)
-
-            # Rellenar la tabla con los datos obtenidos
-            for articulo in articulos:
-                row_position = self.ui.tableWidgetArticulos.rowCount()
-                self.ui.tableWidgetArticulos.insertRow(row_position)
-                for column, data in enumerate(articulo):
-                    self.ui.tableWidgetArticulos.setItem(row_position, column, QTableWidgetItem(str(data)))
-
-            cur.close()
-            con.close()
-
-        except sqlite3.Error as e:
-            QMessageBox.critical(self, "Error", f"No se pudieron cargar los artículos: {str(e)}")
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
