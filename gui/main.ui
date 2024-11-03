@@ -748,7 +748,7 @@ QPushButton:pressed {
 </string>
                        </property>
                        <property name="text">
-                        <string>MODICAR EXISTENCIAS</string>
+                        <string>MODIFICAR EXISTENCIAS</string>
                        </property>
                       </widget>
                      </item>

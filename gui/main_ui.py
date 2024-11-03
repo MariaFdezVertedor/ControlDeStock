@@ -530,7 +530,7 @@ class Ui_MainWindow(object):
         self.btnCompras.setText(QCoreApplication.translate("MainWindow", u"COMPRAS", None))
         self.label_2.setText("")
         self.btnAlmacen.setText(QCoreApplication.translate("MainWindow", u"ALMAC\u00c9N", None))
-        self.btnModificar.setText(QCoreApplication.translate("MainWindow", u"MODICAR EXISTENCIAS", None))
+        self.btnModificar.setText(QCoreApplication.translate("MainWindow", u"MODIFICAR EXISTENCIAS", None))
         self.btnActualizar.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))
         ___qtablewidgetitem = self.tableWidgetArticulos.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"id", None));
