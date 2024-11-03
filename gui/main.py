@@ -1,7 +1,8 @@
+import sqlite3
 import sys
 from PyQt6 import uic
 from PyQt6.QtCore import Qt, QEasingCurve, QPropertyAnimation
-from PyQt6.QtWidgets import QApplication, QMainWindow, QSizeGrip
+from PyQt6.QtWidgets import QApplication, QMainWindow, QSizeGrip, QTableWidgetItem, QMessageBox, QTableWidget
 from gui.modificar import modificarWindow
 
 class MainWindow(QMainWindow):
@@ -10,7 +11,8 @@ class MainWindow(QMainWindow):
         self.ui = uic.loadUi("gui/main.ui")
         self.setup_ui()
         self.inicializarBotones()  
-        self.setupConexiones()      
+        self.setupConexiones()
+        self.tableWidgetArticulos = QTableWidget() 
 
     # Configuración inicial de la interfaz
     def setup_ui(self):
@@ -132,6 +134,32 @@ class MainWindow(QMainWindow):
         self.modificar_window = modificarWindow()
         self.modificar_window.show()
 
+    # Cargar tabla artículos y conectarla con la interfaz
+    def cargarArticulos(self):
+        try:
+            con = sqlite3.connect("stock.db")
+            cur = con.cursor()
+
+            # Ejecutar consulta para obtener los artículos
+            cur.execute("SELECT * FROM articulos")
+            articulos = cur.fetchall()
+
+            # Limpiar tabla antes de cargar datos
+            self.ui.tableWidgetArticulos.setRowCount(0)
+
+            # Rellenar tabla con los datos 
+            for i, articulo in enumerate(articulos):
+                row_position = self.ui.tableWidgetArticulos.rowCount()
+                self.ui.tableWidgetARticulos.insertRow(row_position)
+                for column, data in enumerate(articulo):
+                    self.ui.tableWidgetArticulos.setItem(row_position, column, QTableWidgetItem(str(data)))
+
+            cur.close()
+            con.close()
+        
+        except sqlite3.Error as error:
+            QMessageBox.critical(self, "Error", f"No se pudieron cargar los articulos: {str(error)}")
+                    
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
