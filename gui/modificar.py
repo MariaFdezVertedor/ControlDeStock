@@ -2,8 +2,11 @@ from PyQt6 import uic
 from PyQt6.QtWidgets import QDialog, QApplication, QPushButton, QLabel, QSpinBox, QTableWidget, QTableWidgetItem, QLineEdit, QDateEdit, QComboBox
 
 class modificarWindow(QDialog):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, main_window = None):  # Acepto referencia directa para poder pasar el main_window
+        super().__init__()  
+
+        self.main_window = main_window         ## todo
+
         # Cargar la interfaz desde el archivo .ui
         uic.loadUi("gui/modificar.ui", self)
 
@@ -93,15 +96,12 @@ class modificarWindow(QDialog):
 
         self.lblMensaje.setText("-")
 
-        # Obtener instancia de mainWindow
-        mainWindow = QApplication.activeWindow()
-
-        if mainWindow is None:
-            print("Error: No se pudo obtener mainWindow.")
+        if self.main_window is None:
+            print("Error: No se pudo obtener main_window.")
             return
 
-        # Obtener widget de la tabla articulos desde mainWindow
-        tableWidgetArticulos = mainWindow.findChild(QTableWidget, "tableWidgetArticulos")
+        # Obtener tableWidgetArticulos usando la referencia directa a la ventana main_window
+        tableWidgetArticulos = self.main_window.tableWidgetArticulos
 
         if tableWidgetArticulos is None:
             print("Error: No se pudo obtener tableWidgetArticulos.")

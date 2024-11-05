@@ -133,7 +133,7 @@ class MainWindow(QMainWindow):
 
     # Mostrar la ventana de modificar
     def mostrarModificar(self):
-        self.modificar_window = modificarWindow()
+        self.modificar_window = modificarWindow(self) # Paso referencia directa a la ventana
         self.modificar_window.show()
 
     # Cargar tabla artículos y conectarla con la interfaz
