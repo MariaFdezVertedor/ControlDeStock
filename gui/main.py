@@ -20,8 +20,6 @@ class MainWindow(QMainWindow):
 
         self.insertarDatosPrueba()
 
-        
-
     # Configuración inicial de la interfaz
     def setup_ui(self):
         self.ui.showMaximized()

@@ -103,6 +103,9 @@ class modificarWindow(QDialog):
         if self.main_window is None:
             print("Error: No se pudo obtener main_window.")
             return
+        
+        # Obtener dateEdit
+        fechaSeleccionada = self.dateEdit.date().toString("dd/MM/yyyy")
 
         # Obtener tableWidgetArticulos usando la referencia directa a la ventana main_window y mapeo precios
         tableWidgetArticulos = self.main_window.tableWidgetArticulos
@@ -175,6 +178,9 @@ class modificarWindow(QDialog):
         idCategoria = self.mapeoID.get(categoria, "")
         precioFijo = self.mapeoPrecio.get(categoria, 0.0)
 
+        # Obtejer fecha de dateEdit
+        fechaSeleccionada = self.dateEdit.date().toString("dd/MM/yyyy")
+
         # Verificar si la categoría ya existe en la tabla
         row_count = self.tableWidgetPreview.rowCount()
         found = False
@@ -198,7 +204,7 @@ class modificarWindow(QDialog):
             self.tableWidgetPreview.setItem(row_position, 1, QTableWidgetItem(categoria))
             self.tableWidgetPreview.setItem(row_position, 2, QTableWidgetItem(str(cantidad)))
             self.tableWidgetPreview.setItem(row_position, 3, QTableWidgetItem(f"{precioFijo:.2f}")) # Precios fijos
-            self.tableWidgetPreview.setItem(row_position, 4, QTableWidgetItem("0"))
+            self.tableWidgetPreview.setItem(row_position, 4, QTableWidgetItem(fechaSeleccionada))
             self.tableWidgetPreview.setItem(row_position, 5, QTableWidgetItem("0"))
 
         # Limpiar mensaje de estado después de insertar o actualizar correctamente
@@ -219,6 +225,9 @@ class modificarWindow(QDialog):
         # Obtener mapeo fijo
         idCategoria = self.mapeoID.get(categoria, "")
         precioFijo = self.mapeoPrecio.get(categoria, 0.0)
+
+        # Obtejer fecha de dateEdit
+        fechaSeleccionada = self.dateEdit.date().toString("dd/MM/yyyy")
         
         # Verificar si esa categoria existe en la tabla
         row_count = self.tableWidgetPreview.rowCount()
@@ -245,7 +254,7 @@ class modificarWindow(QDialog):
             self.tableWidgetPreview.setItem(row_position, 1, QTableWidgetItem(categoria))
             self.tableWidgetPreview.setItem(row_position, 2, QTableWidgetItem(str(-cantidad)))
             self.tableWidgetPreview.setItem(row_position, 3, QTableWidgetItem(f"{precioFijo:.2f}")) # Precios fijos
-            self.tableWidgetPreview.setItem(row_position, 4, QTableWidgetItem("0"))
+            self.tableWidgetPreview.setItem(row_position, 4, QTableWidgetItem(fechaSeleccionada))
             self.tableWidgetPreview.setItem(row_position, 5, QTableWidgetItem("0"))
         
         # Limpia mensaje despues de restar
