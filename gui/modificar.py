@@ -19,6 +19,9 @@ class modificarWindow(QDialog):
         # Inicializar valoresde dateEdit y comboBox
         self.valoresIniciales()
 
+        # Mapeo ID fijo
+        self.mapeoID = {"Refresco": 1, "Alcohol": 2, "Vino": 3, "Cava": 4, "Cerveza": 5, "Agua": 6, "Zumo": 7}
+
     def valoresIniciales(self):
         # Guardar sus valores iniciales
         self.fechaInicial = self.dateEdit.date()
@@ -134,7 +137,7 @@ class modificarWindow(QDialog):
             if not existe:
                 rowPosition = tableWidgetArticulos.rowCount()
                 tableWidgetArticulos.insertRow(rowPosition)
-                tableWidgetArticulos.setItem(rowPosition, 0, QTableWidgetItem(str(rowPosition + 1)))
+                tableWidgetArticulos.setItem(rowPosition, 0, QTableWidgetItem(str(id))) # ID fijo
                 tableWidgetArticulos.setItem(rowPosition, 1, QTableWidgetItem(id))
                 tableWidgetArticulos.setItem(rowPosition, 2, QTableWidgetItem(nombre))
                 tableWidgetArticulos.setItem(rowPosition, 3, QTableWidgetItem(cantidad))
@@ -166,6 +169,9 @@ class modificarWindow(QDialog):
             if self.lblMensaje:
                 self.lblMensaje.setText("Selecciona una cantidad diferente a 0.")  # Mensaje de advertencia en lblMensaje
             return  # Termina la función sin agregar la fila
+        
+        # Obtener ID fijo
+        idCategoria = self.mapeoID.get(categoria, "")
 
         # Verificar si la categoría ya existe en la tabla
         row_count = self.tableWidgetPreview.rowCount()
@@ -186,7 +192,7 @@ class modificarWindow(QDialog):
         if not found:
             row_position = self.tableWidgetPreview.rowCount()
             self.tableWidgetPreview.insertRow(row_position)
-            self.tableWidgetPreview.setItem(row_position, 0, QTableWidgetItem(str(row_position + 1)))
+            self.tableWidgetPreview.setItem(row_position, 0, QTableWidgetItem(str(idCategoria))) # ID fijo
             self.tableWidgetPreview.setItem(row_position, 1, QTableWidgetItem(categoria))
             self.tableWidgetPreview.setItem(row_position, 2, QTableWidgetItem(str(cantidad)))
             self.tableWidgetPreview.setItem(row_position, 3, QTableWidgetItem("0"))
@@ -207,6 +213,9 @@ class modificarWindow(QDialog):
             if self.lblMensaje:
                 self.lblMensaje.setText("Selecciona una cantidad diferente a 0.")
             return
+        
+        # Obtener ID fijo
+        idCategoria = self.mapeoID.get(categoria, "")
         
         # Verificar si esa categoria existe en la tabla
         row_count = self.tableWidgetPreview.rowCount()
@@ -229,7 +238,7 @@ class modificarWindow(QDialog):
         if not found:
             row_position = self.tableWidgetPreview.rowCount()
             self.tableWidgetPreview.insertRow(row_position)
-            self.tableWidgetPreview.setItem(row_position, 0, QTableWidgetItem(str(row_position + 1)))
+            self.tableWidgetPreview.setItem(row_position, 0, QTableWidgetItem(str(idCategoria))) # ID fijo
             self.tableWidgetPreview.setItem(row_position, 1, QTableWidgetItem(categoria))
             self.tableWidgetPreview.setItem(row_position, 2, QTableWidgetItem(str(-cantidad)))
             self.tableWidgetPreview.setItem(row_position, 3, QTableWidgetItem("0"))

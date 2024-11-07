@@ -14,7 +14,12 @@ class MainWindow(QMainWindow):
         self.setupConexiones()
         self.tableWidgetArticulos = self.ui.tableWidgetArticulos
 
+        # Mapeo ID fijo
+        self.mapeoID = {"Refresco": 1, "Alcohol": 2, "Vino": 3, "Cava": 4, "Cerveza": 5, "Agua": 6, "Zumo": 7}
+
         self.insertarDatosPrueba()
+
+        
 
     # Configuración inicial de la interfaz
     def setup_ui(self):
@@ -165,18 +170,16 @@ class MainWindow(QMainWindow):
     def insertarDatosPrueba(self):
     # Definir algunos datos de prueba con los campos requeridos
         datosPrueba = [
-        ("Zumo", 10, 5.50, "2024-11-01", "Ingreso inicial"),
-        ("Cava", 15, 7.25, "2024-11-01", "Compra adicional"),
-        ("Agua", 8, 12.00, "2024-11-02", "Inventario inicial")
+        (self.mapeoID["Refresco"], "Refresco", 5, 2.50, "2023-05-01", "Comida"),
+        (self.mapeoID["Cerveza"], "Cerveza", 6, 3.50, "2023-05-02", "Comida"),
+        (self.mapeoID["Agua"], "Agua", 10, 1.50, "2023-05-03", "Bebida"),
     ]
 
     # Insertar cada fila en la tabla `tableWidgetArticulos`
         for articulo in datosPrueba:
             row_position = self.tableWidgetArticulos.rowCount()
             self.tableWidgetArticulos.insertRow(row_position)
-            # Los datos de prueba no incluyen `id` porque es autoincremental, así que se agrega vacío o un marcador.
-            self.tableWidgetArticulos.setItem(row_position, 0, QTableWidgetItem("Auto"))
-            for column, data in enumerate(articulo, start=1):
+            for column, data in enumerate(articulo):
                 self.tableWidgetArticulos.setItem(row_position, column, QTableWidgetItem(str(data)))
 
                     
