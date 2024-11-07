@@ -181,6 +181,9 @@ class modificarWindow(QDialog):
         # Obtejer fecha de dateEdit
         fechaSeleccionada = self.dateEdit.date().toString("dd/MM/yyyy")
 
+        # Obtener texto de lineEvento
+        textoEvento = self.lineEvento.text()
+
         # Verificar si la categoría ya existe en la tabla
         row_count = self.tableWidgetPreview.rowCount()
         found = False
@@ -205,7 +208,7 @@ class modificarWindow(QDialog):
             self.tableWidgetPreview.setItem(row_position, 2, QTableWidgetItem(str(cantidad)))
             self.tableWidgetPreview.setItem(row_position, 3, QTableWidgetItem(f"{precioFijo:.2f}")) # Precios fijos
             self.tableWidgetPreview.setItem(row_position, 4, QTableWidgetItem(fechaSeleccionada))
-            self.tableWidgetPreview.setItem(row_position, 5, QTableWidgetItem("0"))
+            self.tableWidgetPreview.setItem(row_position, 5, QTableWidgetItem(textoEvento))
 
         # Limpiar mensaje de estado después de insertar o actualizar correctamente
         if self.lblMensaje:
@@ -228,6 +231,9 @@ class modificarWindow(QDialog):
 
         # Obtejer fecha de dateEdit
         fechaSeleccionada = self.dateEdit.date().toString("dd/MM/yyyy")
+
+        # Obtener texto de lineEvento
+        textoEvento = self.lineEvento.text()
         
         # Verificar si esa categoria existe en la tabla
         row_count = self.tableWidgetPreview.rowCount()
@@ -255,7 +261,7 @@ class modificarWindow(QDialog):
             self.tableWidgetPreview.setItem(row_position, 2, QTableWidgetItem(str(-cantidad)))
             self.tableWidgetPreview.setItem(row_position, 3, QTableWidgetItem(f"{precioFijo:.2f}")) # Precios fijos
             self.tableWidgetPreview.setItem(row_position, 4, QTableWidgetItem(fechaSeleccionada))
-            self.tableWidgetPreview.setItem(row_position, 5, QTableWidgetItem("0"))
+            self.tableWidgetPreview.setItem(row_position, 5, QTableWidgetItem(textoEvento))
         
         # Limpia mensaje despues de restar
         if self.lblMensaje and found:
