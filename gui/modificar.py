@@ -19,8 +19,9 @@ class modificarWindow(QDialog):
         # Inicializar valoresde dateEdit y comboBox
         self.valoresIniciales()
 
-        # Mapeo ID fijo
+        # Mapeo fijo
         self.mapeoID = {"Refresco": 1, "Alcohol": 2, "Vino": 3, "Cava": 4, "Cerveza": 5, "Agua": 6, "Zumo": 7}
+        self.mapeoPrecio = {"Refresco": 1.20, "Alcohol": 11.90, "Vino": 7.90, "Cava": 8.90, "Cerveza": 2.90, "Agua": 0.80, "Zumo": 1.10}
 
     def valoresIniciales(self):
         # Guardar sus valores iniciales
@@ -103,8 +104,9 @@ class modificarWindow(QDialog):
             print("Error: No se pudo obtener main_window.")
             return
 
-        # Obtener tableWidgetArticulos usando la referencia directa a la ventana main_window
+        # Obtener tableWidgetArticulos usando la referencia directa a la ventana main_window y mapeo precios
         tableWidgetArticulos = self.main_window.tableWidgetArticulos
+        mapeoPrecio = self.main_window.mapeoPrecio
 
         if tableWidgetArticulos is None:
             print("Error: No se pudo obtener tableWidgetArticulos.")
@@ -118,14 +120,14 @@ class modificarWindow(QDialog):
             id = self.tableWidgetPreview.item(row, 0).text()
             nombre = self.tableWidgetPreview.item(row, 1).text()
             cantidad = self.tableWidgetPreview.item(row, 2).text()
-            precio = self.tableWidgetPreview.item(row, 3).text()
+            precioFijo = mapeoPrecio.get(nombre, 0.0) # Obtener el precio fijo
             fecha = self.tableWidgetPreview.item(row, 4).text()
             evento = self.tableWidgetPreview.item(row, 5).text()
 
            # Verificar si el artículo existe  en tableWidgetArticulos
             existe = False
             for i in range(tableWidgetArticulos.rowCount()):
-                if tableWidgetArticulos.item(i, 0).text() == nombre:
+                if tableWidgetArticulos.item(i, 0).text() == str(id):
                     # Si existe, actualizar la cantidad
                     cantidadActual = int(tableWidgetArticulos.item(i, 4).text())
                     nuevaCantidad = int(cantidad) + int(cantidadActual)
@@ -137,13 +139,12 @@ class modificarWindow(QDialog):
             if not existe:
                 rowPosition = tableWidgetArticulos.rowCount()
                 tableWidgetArticulos.insertRow(rowPosition)
-                tableWidgetArticulos.setItem(rowPosition, 0, QTableWidgetItem(str(id))) # ID fijo
-                tableWidgetArticulos.setItem(rowPosition, 1, QTableWidgetItem(id))
-                tableWidgetArticulos.setItem(rowPosition, 2, QTableWidgetItem(nombre))
-                tableWidgetArticulos.setItem(rowPosition, 3, QTableWidgetItem(cantidad))
-                tableWidgetArticulos.setItem(rowPosition, 4, QTableWidgetItem(precio))
-                tableWidgetArticulos.setItem(rowPosition, 5, QTableWidgetItem(fecha))
-                tableWidgetArticulos.setItem(rowPosition, 6, QTableWidgetItem(evento))
+                tableWidgetArticulos.setItem(rowPosition, 0, QTableWidgetItem(str(id)))  # ID fijo
+                tableWidgetArticulos.setItem(rowPosition, 1, QTableWidgetItem(nombre))
+                tableWidgetArticulos.setItem(rowPosition, 2, QTableWidgetItem(cantidad))
+                tableWidgetArticulos.setItem(rowPosition, 3, QTableWidgetItem(f"{precioFijo:.2f}"))  # Precio fijo
+                tableWidgetArticulos.setItem(rowPosition, 4, QTableWidgetItem(fecha))
+                tableWidgetArticulos.setItem(rowPosition, 5, QTableWidgetItem(evento))
 
             # Cerrar la ventana despues de confirmar los cambios
             self.close()
@@ -170,8 +171,9 @@ class modificarWindow(QDialog):
                 self.lblMensaje.setText("Selecciona una cantidad diferente a 0.")  # Mensaje de advertencia en lblMensaje
             return  # Termina la función sin agregar la fila
         
-        # Obtener ID fijo
+        # Obtener mapeo fijo
         idCategoria = self.mapeoID.get(categoria, "")
+        precioFijo = self.mapeoPrecio.get(categoria, 0.0)
 
         # Verificar si la categoría ya existe en la tabla
         row_count = self.tableWidgetPreview.rowCount()
@@ -195,7 +197,7 @@ class modificarWindow(QDialog):
             self.tableWidgetPreview.setItem(row_position, 0, QTableWidgetItem(str(idCategoria))) # ID fijo
             self.tableWidgetPreview.setItem(row_position, 1, QTableWidgetItem(categoria))
             self.tableWidgetPreview.setItem(row_position, 2, QTableWidgetItem(str(cantidad)))
-            self.tableWidgetPreview.setItem(row_position, 3, QTableWidgetItem("0"))
+            self.tableWidgetPreview.setItem(row_position, 3, QTableWidgetItem(f"{precioFijo:.2f}")) # Precios fijos
             self.tableWidgetPreview.setItem(row_position, 4, QTableWidgetItem("0"))
             self.tableWidgetPreview.setItem(row_position, 5, QTableWidgetItem("0"))
 
@@ -214,8 +216,9 @@ class modificarWindow(QDialog):
                 self.lblMensaje.setText("Selecciona una cantidad diferente a 0.")
             return
         
-        # Obtener ID fijo
+        # Obtener mapeo fijo
         idCategoria = self.mapeoID.get(categoria, "")
+        precioFijo = self.mapeoPrecio.get(categoria, 0.0)
         
         # Verificar si esa categoria existe en la tabla
         row_count = self.tableWidgetPreview.rowCount()
@@ -241,7 +244,7 @@ class modificarWindow(QDialog):
             self.tableWidgetPreview.setItem(row_position, 0, QTableWidgetItem(str(idCategoria))) # ID fijo
             self.tableWidgetPreview.setItem(row_position, 1, QTableWidgetItem(categoria))
             self.tableWidgetPreview.setItem(row_position, 2, QTableWidgetItem(str(-cantidad)))
-            self.tableWidgetPreview.setItem(row_position, 3, QTableWidgetItem("0"))
+            self.tableWidgetPreview.setItem(row_position, 3, QTableWidgetItem(f"{precioFijo:.2f}")) # Precios fijos
             self.tableWidgetPreview.setItem(row_position, 4, QTableWidgetItem("0"))
             self.tableWidgetPreview.setItem(row_position, 5, QTableWidgetItem("0"))
         

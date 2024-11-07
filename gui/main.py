@@ -14,8 +14,9 @@ class MainWindow(QMainWindow):
         self.setupConexiones()
         self.tableWidgetArticulos = self.ui.tableWidgetArticulos
 
-        # Mapeo ID fijo
+        # Mapeo fijo
         self.mapeoID = {"Refresco": 1, "Alcohol": 2, "Vino": 3, "Cava": 4, "Cerveza": 5, "Agua": 6, "Zumo": 7}
+        self.mapeoPrecio = {"Refresco": 1.20, "Alcohol": 11.90, "Vino": 7.90, "Cava": 8.90, "Cerveza": 2.90, "Agua": 0.80, "Zumo": 1.10}
 
         self.insertarDatosPrueba()
 
