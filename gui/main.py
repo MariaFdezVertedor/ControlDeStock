@@ -18,6 +18,9 @@ class MainWindow(QMainWindow):
         self.mapeoID = {"Refresco": 1, "Alcohol": 2, "Vino": 3, "Cava": 4, "Cerveza": 5, "Agua": 6, "Zumo": 7}
         self.mapeoPrecio = {"Refresco": 1.20, "Alcohol": 11.90, "Vino": 7.90, "Cava": 8.90, "Cerveza": 2.90, "Agua": 0.80, "Zumo": 1.10}
 
+        # Verificar si estan cargados los articulos en la base de datos
+        self.articulosCargados = False
+
         self.insertarDatosPrueba()
 
     # Configuración inicial de la interfaz
@@ -133,15 +136,21 @@ class MainWindow(QMainWindow):
     # Mostrar la página de "Almacén" y cargar artículos
     def mostrarAlmacen(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.page2)
+        # Llamar solo si no han sido cargados 
         self.cargarArticulos()
 
     # Mostrar la ventana de modificar
     def mostrarModificar(self):
         self.modificar_window = modificarWindow(self) # Paso referencia directa a la ventana
+        self.cargarArticulos()
         self.modificar_window.show()
 
     # Cargar tabla artículos y conectarla con la interfaz
     def cargarArticulos(self):
+        # Verificar si los artiuclos se han cargado
+        if self.articulosCargados:
+            return
+        
         try:
             con = sqlite3.connect("stock.db")
             cur = con.cursor()
@@ -149,9 +158,6 @@ class MainWindow(QMainWindow):
             # Ejecutar consulta para obtener los artículos
             cur.execute("SELECT * FROM articulos")
             articulos = cur.fetchall()
-
-            # Limpiar tabla antes de cargar datos
-            self.tableWidgetArticulos.setRowCount(0)
 
             # Rellenar tabla con los datos 
             for i, articulo in enumerate(articulos):
@@ -162,6 +168,9 @@ class MainWindow(QMainWindow):
 
             cur.close()
             con.close()
+
+            # Marcar los artículos como cargados
+            self.articulosCargados = True
         
         except sqlite3.Error as error:
             QMessageBox.critical(self, "Error", f"No se pudieron cargar los articulos: {str(error)}")
