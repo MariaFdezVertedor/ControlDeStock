@@ -90,10 +90,10 @@ class modificarWindow(QDialog):
         self.btnConfirmar.clicked.connect(self.confirmarCambios)
 
     def verificarCampos(self):
-        # Verificar si dateEdit, comboBox o lineEdit están en el estado correcto
-        if (self.dateEdit.date() == self.fechaInicial or self.comboBox.currentIndex() == self.comboBoxInicial or self.lineEvento.text() == ""):
+        # Verificar si omboBox o lineEdit están en el estado correcto
+        if (self.comboBox.currentIndex() == self.comboBoxInicial or self.lineEvento.text() == ""):
             self.btnConfirmar.setEnabled(False)
-            self.lblMensaje.setText("Debe cumplimentar los campos Evento, Fecha y Categoría correctamente.")
+            self.lblMensaje.setText("Debe cumplimentar los campos Evento y Categoría correctamente.")
         else:
             self.btnConfirmar.setEnabled(True)
 
