@@ -1,5 +1,6 @@
 from PyQt6 import uic
 from PyQt6.QtWidgets import QDialog, QApplication, QPushButton, QLabel, QSpinBox, QTableWidget, QTableWidgetItem, QLineEdit, QDateEdit, QComboBox
+from PyQt6.QtCore import QDate
 
 class modificarWindow(QDialog):
     def __init__(self, main_window = None):  # Acepto referencia directa para poder pasar el main_window
@@ -22,6 +23,9 @@ class modificarWindow(QDialog):
         # Mapeo fijo
         self.mapeoID = {"Refresco": 1, "Alcohol": 2, "Vino": 3, "Cava": 4, "Cerveza": 5, "Agua": 6, "Zumo": 7}
         self.mapeoPrecio = {"Refresco": 1.20, "Alcohol": 11.90, "Vino": 7.90, "Cava": 8.90, "Cerveza": 2.90, "Agua": 0.80, "Zumo": 1.10}
+
+        # Configurar dateEdit para que muestre fecha actual
+        self.dateEdit.setDate(QDate.currentDate())
 
     def valoresIniciales(self):
         # Guardar sus valores iniciales
@@ -132,9 +136,9 @@ class modificarWindow(QDialog):
             for i in range(tableWidgetArticulos.rowCount()):
                 if tableWidgetArticulos.item(i, 0).text() == str(id):
                     # Si existe, actualizar la cantidad
-                    cantidadActual = int(tableWidgetArticulos.item(i, 4).text())
+                    cantidadActual = tableWidgetArticulos.item(i, 2).text()
                     nuevaCantidad = int(cantidad) + int(cantidadActual)
-                    tableWidgetArticulos.setItem(i, 4, QTableWidgetItem(str(nuevaCantidad)))
+                    tableWidgetArticulos.setItem(i, 2, QTableWidgetItem(str(nuevaCantidad)))
                     existe = True
                     break
 
